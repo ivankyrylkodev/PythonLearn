@@ -25,17 +25,30 @@ Getting started with Python fundamentals: functions, input/output, and basic ari
 
   The script asks the user for a number, squares it, and prints the result.
 
+#### Problem Set 0
+
+Exercises that put the Week 0 concepts into practice.
+
+- **[Problem Set/Indoor Voice/indoor.py](Week%200/Problem%20Set/Indoor%20Voice/indoor.py)** - "Indoor Voice": converts shouted (all-caps) text into a normal, quiet sentence. Demonstrates:
+  - Reading a full line of text with `input()`
+  - String methods: `.lower()` converts every character in a string to lowercase
+  - Chaining a method call directly onto the result of `input()`, then passing that straight into `print()`, without storing an intermediate variable
+
+  The script reads a line of text and prints it back entirely in lowercase, so an ALL-CAPS "outdoor voice" sentence reads as a calm "indoor voice" one.
+
 ## Getting Started
 
-To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder name contains a space):
+To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
 
 ```bash
 python "Week 0/hello.py"
 python "Week 0/calculator.py"
+python "Week 0/Problem Set/Indoor Voice/indoor.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
 - `calculator.py` will prompt for a number and print its square.
+- `indoor.py` will prompt for a line of text and print it back in lowercase.
 
 ## Learning Objectives
 
@@ -44,3 +57,4 @@ python "Week 0/calculator.py"
 - Input/output operations, including converting input strings to numbers
 - Returning values from functions vs. printing directly
 - Using built-in functions like `pow()`
+- Working with string methods like `.lower()`
