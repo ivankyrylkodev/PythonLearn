@@ -63,6 +63,17 @@ Exercises that put the Week 0 concepts into practice.
 
   The script asks for the cost of the meal (e.g. `$25.00`) and a tip percentage (e.g. `15%`), strips the `$` and `%` symbols, converts both to numbers, and prints how much to leave, rounded to two decimal places.
 
+### Week 1 - Conditionals
+
+Making decisions in code with `if`, `elif`, and `else`.
+
+- **[compare.py](Week%201/compare.py)** - A number comparison program that demonstrates:
+  - Reading two separate integer inputs with `int(input(...))`
+  - Comparison operators: `<`, `>`, and `==`
+  - Branching with `if` / `elif` / `elif`, where only the first matching branch runs
+
+  The script asks for two numbers, `x` and `y`, and prints whether `x` is less than, greater than, or equal to `y`.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -75,6 +86,7 @@ python "Week 0/Problem Set/playback/playback.py"
 python "Week 0/Problem Set/faces/faces.py"
 python "Week 0/Problem Set/einstein/einstein.py"
 python "Week 0/Problem Set/tip/tip.py"
+python "Week 1/compare.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -84,6 +96,7 @@ python "Week 0/Problem Set/tip/tip.py"
 - `faces.py` will prompt for a line of text and print it back with `:)` and `:(` replaced by emoji.
 - `einstein.py` will prompt for a mass (in kg) and print the equivalent energy (in joules).
 - `tip.py` will prompt for a meal cost and a tip percentage, then print how much tip to leave.
+- `compare.py` will prompt for two numbers, `x` and `y`, and print whether `x` is less than, greater than, or equal to `y`.
 
 ## Learning Objectives
 
@@ -96,3 +109,4 @@ python "Week 0/Problem Set/tip/tip.py"
 - Operator precedence in arithmetic expressions
 - Converting strings to `float` values, and cleaning up input (stripping symbols like `$` and `%`) before converting it
 - Formatting output with f-strings, including format specs like `:.2f` for two decimal places
+- Comparison operators (`<`, `>`, `==`) and branching with `if` / `elif` / `else`
