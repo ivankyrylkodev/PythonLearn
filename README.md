@@ -55,6 +55,14 @@ Exercises that put the Week 0 concepts into practice.
 
   The script reads a mass in kilograms, multiplies it by the speed of light in meters per second squared, and prints the resulting energy in joules.
 
+- **[Problem Set/tip/tip.py](Week%200/Problem%20Set/tip/tip.py)** - "Tip Calculator": works out how much tip to leave from a bill amount and a tip percentage. Demonstrates:
+  - Helper functions that clean up input before converting it: `dollars_to_float()` strips a leading `$` with `.replace("$", "")` before calling `float()`; `percent_to_float()` strips a trailing `%` the same way, then divides by 100 so `"10"` becomes `0.1`
+  - Passing the raw string from `input()` straight into a helper function instead of storing it in a variable first
+  - Formatted string literals (f-strings): `f"Leave ${tip:.2f}"` embeds the `tip` variable directly inside the string, formatted to two decimal places with the `:.2f` format spec
+  - Multiplying two `float` values together to get the tip amount
+
+  The script asks for the cost of the meal (e.g. `$25.00`) and a tip percentage (e.g. `15%`), strips the `$` and `%` symbols, converts both to numbers, and prints how much to leave, rounded to two decimal places.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -66,6 +74,7 @@ python "Week 0/Problem Set/Indoor Voice/indoor.py"
 python "Week 0/Problem Set/playback/playback.py"
 python "Week 0/Problem Set/faces/faces.py"
 python "Week 0/Problem Set/einstein/einstein.py"
+python "Week 0/Problem Set/tip/tip.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -74,6 +83,7 @@ python "Week 0/Problem Set/einstein/einstein.py"
 - `playback.py` will prompt for a line of text and print it back with spaces replaced by `"..."`.
 - `faces.py` will prompt for a line of text and print it back with `:)` and `:(` replaced by emoji.
 - `einstein.py` will prompt for a mass (in kg) and print the equivalent energy (in joules).
+- `tip.py` will prompt for a meal cost and a tip percentage, then print how much tip to leave.
 
 ## Learning Objectives
 
@@ -84,3 +94,5 @@ python "Week 0/Problem Set/einstein/einstein.py"
 - Using built-in functions like `pow()`, and the equivalent `**` exponentiation operator
 - Working with string methods like `.lower()` and `.replace()`, including chaining multiple method calls together
 - Operator precedence in arithmetic expressions
+- Converting strings to `float` values, and cleaning up input (stripping symbols like `$` and `%`) before converting it
+- Formatting output with f-strings, including format specs like `:.2f` for two decimal places
