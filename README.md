@@ -69,10 +69,24 @@ Making decisions in code with `if`, `elif`, and `else`.
 
 - **[compare.py](Week%201/compare.py)** - A number comparison program that demonstrates:
   - Reading two separate integer inputs with `int(input(...))`
-  - Comparison operators: `<`, `>`, and `==`
-  - Branching with `if` / `elif` / `elif`, where only the first matching branch runs
+  - The equality operator `==`
+  - Branching with `if` / `else`, where the `else` branch catches every case the `if` didn't
 
-  The script asks for two numbers, `x` and `y`, and prints whether `x` is less than, greater than, or equal to `y`.
+  The script asks for two numbers, `x` and `y`, and prints whether `x` is equal to `y` or not.
+
+- **[grade.py](Week%201/grade.py)** - A letter-grade calculator that demonstrates:
+  - Reading a single integer input with `int(input(...))`
+  - Comparison operators: `>=`
+  - Branching with `if` / `elif` / `elif` / `elif` / `else`, where conditions are checked top to bottom and only the first true one runs - which is why each `elif` only needs to rule out the *next* threshold down, not repeat the ones above it
+
+  The script asks for a numeric score and prints the corresponding letter grade: A (90+), B (80-89), C (70-79), D (60-69), or F (below 60).
+
+- **[parity.py](Week%201/parity.py)** - An even/odd checker that demonstrates:
+  - Defining a function that returns a boolean expression directly (`return (n % 2 == 0)`) instead of computing a value first and returning it afterward
+  - The modulo operator `%`, which gives the remainder of a division - a number is even exactly when it leaves no remainder after dividing by 2
+  - Using a function's return value as the condition of an `if` statement (`if is_even(x):`)
+
+  The script asks for a number and prints whether it's `Even` or `Odd`.
 
 ## Getting Started
 
@@ -87,6 +101,8 @@ python "Week 0/Problem Set/faces/faces.py"
 python "Week 0/Problem Set/einstein/einstein.py"
 python "Week 0/Problem Set/tip/tip.py"
 python "Week 1/compare.py"
+python "Week 1/grade.py"
+python "Week 1/parity.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -96,7 +112,9 @@ python "Week 1/compare.py"
 - `faces.py` will prompt for a line of text and print it back with `:)` and `:(` replaced by emoji.
 - `einstein.py` will prompt for a mass (in kg) and print the equivalent energy (in joules).
 - `tip.py` will prompt for a meal cost and a tip percentage, then print how much tip to leave.
-- `compare.py` will prompt for two numbers, `x` and `y`, and print whether `x` is less than, greater than, or equal to `y`.
+- `compare.py` will prompt for two numbers, `x` and `y`, and print whether `x` is equal to `y` or not.
+- `grade.py` will prompt for a score and print the corresponding letter grade.
+- `parity.py` will prompt for a number and print whether it's `Even` or `Odd`.
 
 ## Learning Objectives
 
@@ -109,4 +127,5 @@ python "Week 1/compare.py"
 - Operator precedence in arithmetic expressions
 - Converting strings to `float` values, and cleaning up input (stripping symbols like `$` and `%`) before converting it
 - Formatting output with f-strings, including format specs like `:.2f` for two decimal places
-- Comparison operators (`<`, `>`, `==`) and branching with `if` / `elif` / `else`
+- Comparison operators (`==`, `>=`) and branching with `if` / `elif` / `else`
+- The modulo operator `%` and returning boolean expressions directly from a function
