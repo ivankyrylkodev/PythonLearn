@@ -88,6 +88,13 @@ Making decisions in code with `if`, `elif`, and `else`.
 
   The script asks for a number and prints whether it's `Even` or `Odd`.
 
+- **[house.py](Week%201/house.py)** - A Hogwarts house sorter that demonstrates:
+  - Structural pattern matching with `match` / `case`, an alternative to a long `if` / `elif` chain
+  - Matching several possible values in a single `case` with the `|` (or) pattern: `case "Harry" | "Hermione" | "Ron":`
+  - The wildcard pattern `case _:`, which matches anything not caught by an earlier `case` - the `match` equivalent of a final `else`
+
+  The script asks for a name and prints "Griffindor" for Harry, Hermione, or Ron, "Slytherin" for Draco, and "Who?" for anyone else.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -102,6 +109,7 @@ python "Week 0/Problem Set/einstein/einstein.py"
 python "Week 0/Problem Set/tip/tip.py"
 python "Week 1/compare.py"
 python "Week 1/grade.py"
+python "Week 1/house.py"
 python "Week 1/parity.py"
 ```
 
@@ -114,6 +122,7 @@ python "Week 1/parity.py"
 - `tip.py` will prompt for a meal cost and a tip percentage, then print how much tip to leave.
 - `compare.py` will prompt for two numbers, `x` and `y`, and print whether `x` is equal to `y` or not.
 - `grade.py` will prompt for a score and print the corresponding letter grade.
+- `house.py` will prompt for a name and print the matching Hogwarts house, or `Who?` if it doesn't recognize the name.
 - `parity.py` will prompt for a number and print whether it's `Even` or `Odd`.
 
 ## Learning Objectives
@@ -128,4 +137,5 @@ python "Week 1/parity.py"
 - Converting strings to `float` values, and cleaning up input (stripping symbols like `$` and `%`) before converting it
 - Formatting output with f-strings, including format specs like `:.2f` for two decimal places
 - Comparison operators (`==`, `>=`) and branching with `if` / `elif` / `else`
+- Structural pattern matching with `match` / `case`, including combining values with `|` and the `case _:` wildcard
 - The modulo operator `%` and returning boolean expressions directly from a function
