@@ -95,6 +95,25 @@ Making decisions in code with `if`, `elif`, and `else`.
 
   The script asks for a name and prints "Griffindor" for Harry, Hermione, or Ron, "Slytherin" for Draco, and "Who?" for anyone else.
 
+#### Problem Set 1
+
+Exercises that put the Week 1 concepts into practice.
+
+- **[Problem Set/bank/bank.py](Week%201/Problem%20Set/bank/bank.py)** - "Bank": a teller that greets a customer and quotes a balance based on how they say hello. Demonstrates:
+  - Chaining `.lower()` and `.strip()` together on the result of `input()`, so the check that follows doesn't care about capitalization or stray leading/trailing whitespace
+  - Slicing a string with `[:5]` to grab just its first 5 characters, so `greeting[:5] == "hello"` matches "hello there" as well as a bare "hello"
+  - Indexing a single character out of a string with `[0]`
+  - Branching with `if` / `elif` / `else`, where the more specific check (`greeting[:5] == "hello"`) is tested before the looser one (`greeting[0] == "h"`), since `elif` only runs if every check above it was false
+
+  The script asks for a greeting and prints `$0` if it starts with "hello", `$20` if it merely starts with "h" (e.g. "hi"), or `$100` for anything else.
+
+- **[Problem Set/deep/deep.py](Week%201/Problem%20Set/deep/deep.py)** - "Deep Thought": answers the ultimate question, Hitchhiker's-Guide style. Demonstrates:
+  - Calling `.lower()` on `input()`'s result so the answer matches regardless of how it was typed
+  - `match` / `case` again, this time matching several different spellings of the same answer with `|` ("42", "forty-two", "forty two")
+  - The `case _:` wildcard catching every other response
+
+  The script asks for the Answer to the Great Question of Life, the Universe, and Everything, and prints "Yes" if it's some form of "42", or "No" otherwise.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -111,6 +130,8 @@ python "Week 1/compare.py"
 python "Week 1/grade.py"
 python "Week 1/house.py"
 python "Week 1/parity.py"
+python "Week 1/Problem Set/bank/bank.py"
+python "Week 1/Problem Set/deep/deep.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -124,6 +145,8 @@ python "Week 1/parity.py"
 - `grade.py` will prompt for a score and print the corresponding letter grade.
 - `house.py` will prompt for a name and print the matching Hogwarts house, or `Who?` if it doesn't recognize the name.
 - `parity.py` will prompt for a number and print whether it's `Even` or `Odd`.
+- `bank.py` will prompt for a greeting and print `$0`, `$20`, or `$100` depending on how it starts.
+- `deep.py` will prompt for the Answer to the Great Question of Life, the Universe, and Everything and print `Yes` or `No`.
 
 ## Learning Objectives
 
@@ -139,3 +162,5 @@ python "Week 1/parity.py"
 - Comparison operators (`==`, `>=`) and branching with `if` / `elif` / `else`
 - Structural pattern matching with `match` / `case`, including combining values with `|` and the `case _:` wildcard
 - The modulo operator `%` and returning boolean expressions directly from a function
+- String slicing (`[:5]`) and indexing (`[0]`) to inspect part of a string
+- Ordering `if` / `elif` checks from most to least specific
