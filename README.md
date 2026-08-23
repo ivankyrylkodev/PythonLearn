@@ -114,6 +114,30 @@ Exercises that put the Week 1 concepts into practice.
 
   The script asks for the Answer to the Great Question of Life, the Universe, and Everything, and prints "Yes" if it's some form of "42", or "No" otherwise.
 
+- **[Problem Set/extensions/extensions.py](Week%201/Problem%20Set/extensions/extensions.py)** - "File Extensions": looks at a filename and prints the MIME type that matches its extension. Demonstrates:
+  - Chaining `.strip().lower().split(".")` on the result of `input()`, turning the filename into a list of its dot-separated parts in one step
+  - Grabbing the last element of that list with `file[len(file) - 1]`, so the extension is found correctly even if the filename itself contains dots (e.g. `my.notes.txt`)
+  - `match` / `case` matching several extensions to the same MIME type with `|` (e.g. `case "jpg" | "jpeg":`)
+  - `case _:` falling back to the generic `application/octet-stream` type for any unrecognized extension
+
+  The script asks for a filename and prints its MIME type - `image/gif`, `image/jpeg`, `image/png`, `application/pdf`, `text/plain`, or `application/zip` - or `application/octet-stream` if the extension isn't recognized.
+
+- **[Problem Set/interpreter/interpreter.py](Week%201/Problem%20Set/interpreter/interpreter.py)** - "Interpreter": a small four-function calculator that reads and evaluates a whole expression from a single line of input. Demonstrates:
+  - Tuple unpacking: `x, symb, y = expression.split(" ")` splits `"3 + 4"` into three separate variables in one line, since `.split(" ")` on a string with two spaces returns a list of exactly three items
+  - `match` / `case` branching on the operator symbol (`+`, `-`, `*`, `/`)
+  - Converting both operands to `float()` inside each `case`, since splitting a string always produces strings, not numbers
+  - `case _:` catching any symbol that isn't a recognized operator
+
+  The script asks for an expression like `3 + 4`, and prints the result of applying the operator to the two numbers, or `Unknown operation` if the symbol isn't `+`, `-`, `*`, or `/`.
+
+- **[Problem Set/meal/meal.py](Week%201/Problem%20Set/meal/meal.py)** - "Meal Time": decides whether a given clock time falls within breakfast, lunch, or dinner. Demonstrates:
+  - Splitting work across a `main()` function and a `convert()` helper function, run in that order at the bottom of the file via `if __name__ == "__main__":` - a standard way to mark which function should run when the file is executed directly
+  - Converting an `"HH:MM"` string into a single fractional-hour number: `time.split(":")` breaks it into hours and minutes, then `int(time[0]) + int(time[1])/60` combines them (e.g. `"7:30"` becomes `7.5`)
+  - Chained comparisons: `7 <= con_time <= 8` reads like the mathematical notation and checks both bounds at once, equivalent to `7 <= con_time and con_time <= 8`
+  - An `if` / `elif` chain with no final `else` - if the time doesn't fall in any of the three windows, the script simply prints nothing
+
+  The script asks for the time (e.g. `7:30`), converts it to a fractional hour, and prints `breakfast time`, `lunch time`, or `dinner time` if it falls in the corresponding window - otherwise it prints nothing.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -132,6 +156,9 @@ python "Week 1/house.py"
 python "Week 1/parity.py"
 python "Week 1/Problem Set/bank/bank.py"
 python "Week 1/Problem Set/deep/deep.py"
+python "Week 1/Problem Set/extensions/extensions.py"
+python "Week 1/Problem Set/interpreter/interpreter.py"
+python "Week 1/Problem Set/meal/meal.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -147,6 +174,9 @@ python "Week 1/Problem Set/deep/deep.py"
 - `parity.py` will prompt for a number and print whether it's `Even` or `Odd`.
 - `bank.py` will prompt for a greeting and print `$0`, `$20`, or `$100` depending on how it starts.
 - `deep.py` will prompt for the Answer to the Great Question of Life, the Universe, and Everything and print `Yes` or `No`.
+- `extensions.py` will prompt for a filename and print its MIME type based on the extension.
+- `interpreter.py` will prompt for an expression (e.g. `3 + 4`) and print the result.
+- `meal.py` will prompt for a time (e.g. `7:30`) and print whether it's breakfast, lunch, or dinner time.
 
 ## Learning Objectives
 
@@ -164,3 +194,7 @@ python "Week 1/Problem Set/deep/deep.py"
 - The modulo operator `%` and returning boolean expressions directly from a function
 - String slicing (`[:5]`) and indexing (`[0]`) to inspect part of a string
 - Ordering `if` / `elif` checks from most to least specific
+- Tuple unpacking to split one string into several variables at once (`x, symb, y = expression.split(" ")`)
+- Chained comparisons (`7 <= con_time <= 8`) as a shorthand for combining two bounds with `and`
+- Splitting work between a `main()` function and helper functions, run via `if __name__ == "__main__":`
+- Indexing from the end of a list with `list[len(list) - 1]` to handle inputs of varying length (e.g. filenames with extra dots)
