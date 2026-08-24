@@ -138,6 +138,26 @@ Exercises that put the Week 1 concepts into practice.
 
   The script asks for the time (e.g. `7:30`), converts it to a fractional hour, and prints `breakfast time`, `lunch time`, or `dinner time` if it falls in the corresponding window - otherwise it prints nothing.
 
+### Week 2 - Loops
+
+Repeating work with `while` and `for` loops.
+
+- **[cat.py](Week%202/cat.py)** - A "meow" printer that demonstrates:
+  - An input-validation loop: `while True:` repeats forever until an explicit `break`, which here only fires once the entered number is greater than 0 - so invalid input (zero, negative, or unparseable text) just asks again instead of crashing or continuing with a bad value
+  - Splitting the program into three functions - `main()`, `get_number()`, and `meow()` - so reading/validating input is kept separate from acting on it
+  - `for _ in range(n):` to repeat an action exactly `n` times; the underscore `_` is a conventional throwaway variable name used when the loop needs a counter to control repetition but never actually uses its value
+
+  The script asks for a positive whole number and prints "meow" that many times, re-prompting if the number entered isn't greater than 0.
+
+- **[hogwarts.py](Week%202/hogwarts.py)** - A numbered roster printer that demonstrates:
+  - A list literal, `students = ["Hermione", "Harry", "Ron"]`, holding several values in one ordered, indexable variable
+  - `for i in range(len(students)):` to loop over every valid index of a list, from `0` up to (but not including) its length
+  - Indexing into a list with `students[i]` to retrieve the item at a given position
+  - Printing two values in one `print()` call (`i + 1` and `students[i]`), separated automatically by a space
+  - Adding `1` to `i` so a zero-indexed list (position `0`, `1`, `2`, ...) displays as a human-friendly, one-indexed numbered list (`1`, `2`, `3`, ...)
+
+  The script prints each name in the `students` list on its own line, numbered starting from 1.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -159,6 +179,8 @@ python "Week 1/Problem Set/deep/deep.py"
 python "Week 1/Problem Set/extensions/extensions.py"
 python "Week 1/Problem Set/interpreter/interpreter.py"
 python "Week 1/Problem Set/meal/meal.py"
+python "Week 2/cat.py"
+python "Week 2/hogwarts.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -177,6 +199,8 @@ python "Week 1/Problem Set/meal/meal.py"
 - `extensions.py` will prompt for a filename and print its MIME type based on the extension.
 - `interpreter.py` will prompt for an expression (e.g. `3 + 4`) and print the result.
 - `meal.py` will prompt for a time (e.g. `7:30`) and print whether it's breakfast, lunch, or dinner time.
+- `cat.py` will prompt for a positive number and print "meow" that many times.
+- `hogwarts.py` will print each name in a hardcoded list of students, numbered starting from 1.
 
 ## Learning Objectives
 
@@ -198,3 +222,6 @@ python "Week 1/Problem Set/meal/meal.py"
 - Chained comparisons (`7 <= con_time <= 8`) as a shorthand for combining two bounds with `and`
 - Splitting work between a `main()` function and helper functions, run via `if __name__ == "__main__":`
 - Indexing from the end of a list with `list[len(list) - 1]` to handle inputs of varying length (e.g. filenames with extra dots)
+- Input-validation loops with `while True:` and `break`, so invalid input is silently re-prompted instead of crashing the program
+- Repeating an action a fixed number of times with `for _ in range(n):`, using `_` as a throwaway variable when the loop counter's value isn't needed
+- List literals and looping over list indices with `for i in range(len(list)):`, then indexing with `list[i]` to access each item
