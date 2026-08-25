@@ -149,14 +149,21 @@ Repeating work with `while` and `for` loops.
 
   The script asks for a positive whole number and prints "meow" that many times, re-prompting if the number entered isn't greater than 0.
 
-- **[hogwarts.py](Week%202/hogwarts.py)** - A numbered roster printer that demonstrates:
-  - A list literal, `students = ["Hermione", "Harry", "Ron"]`, holding several values in one ordered, indexable variable
-  - `for i in range(len(students)):` to loop over every valid index of a list, from `0` up to (but not including) its length
-  - Indexing into a list with `students[i]` to retrieve the item at a given position
-  - Printing two values in one `print()` call (`i + 1` and `students[i]`), separated automatically by a space
-  - Adding `1` to `i` so a zero-indexed list (position `0`, `1`, `2`, ...) displays as a human-friendly, one-indexed numbered list (`1`, `2`, `3`, ...)
+- **[hogwarts.py](Week%202/hogwarts.py)** - A student roster printer that demonstrates:
+  - A list of dictionaries, `students = [{"name": "Hermione", "house": "Gryffindor", "patronus": "Otter"}, ...]`, where each item bundles several related values under named keys instead of just one value per position
+  - `for student in students:` looping directly over the *items* of a list, rather than over its indices, since each iteration doesn't need to know its position
+  - Indexing into a dictionary with a string key, `student["name"]`, instead of an integer position
+  - The `sep` keyword argument to `print()`: `print(a, b, c, sep=", ")` joins the values with `", "` instead of `print()`'s default single space
+  - Using `None` as a dictionary value to represent "no data" - Draco's `"patronus"` is `None` because he doesn't have one, and `print()` displays it as the literal text `None`
 
-  The script prints each name in the `students` list on its own line, numbered starting from 1.
+  The script loops over the `students` list and, for each student, prints their name, house, and patronus (or `None` if they don't have one), separated by commas.
+
+- **[mario.py](Week%202/mario.py)** - A solid square drawn out of `#` characters, demonstrating:
+  - Splitting drawing logic across three functions - `main()`, `print_square(size)`, and `print_row(width)` - where each function calls the next, so `main()` doesn't need to know how a row is actually drawn
+  - `for i in range(size):` used purely to repeat an action `size` times; like the `_` convention seen in `cat.py`, the loop variable `i` is never read inside the loop body
+  - The string repetition operator `*`: `"#" * width` builds a row by repeating the single-character string `"#"` `width` times, rather than looping over individual characters
+
+  The script prints a 3x3 square of `#` characters, one row per line.
 
 ## Getting Started
 
@@ -181,6 +188,7 @@ python "Week 1/Problem Set/interpreter/interpreter.py"
 python "Week 1/Problem Set/meal/meal.py"
 python "Week 2/cat.py"
 python "Week 2/hogwarts.py"
+python "Week 2/mario.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -200,7 +208,8 @@ python "Week 2/hogwarts.py"
 - `interpreter.py` will prompt for an expression (e.g. `3 + 4`) and print the result.
 - `meal.py` will prompt for a time (e.g. `7:30`) and print whether it's breakfast, lunch, or dinner time.
 - `cat.py` will prompt for a positive number and print "meow" that many times.
-- `hogwarts.py` will print each name in a hardcoded list of students, numbered starting from 1.
+- `hogwarts.py` will print each student's name, house, and patronus from a hardcoded list.
+- `mario.py` will print a 3x3 square made of `#` characters.
 
 ## Learning Objectives
 
@@ -225,3 +234,7 @@ python "Week 2/hogwarts.py"
 - Input-validation loops with `while True:` and `break`, so invalid input is silently re-prompted instead of crashing the program
 - Repeating an action a fixed number of times with `for _ in range(n):`, using `_` as a throwaway variable when the loop counter's value isn't needed
 - List literals and looping over list indices with `for i in range(len(list)):`, then indexing with `list[i]` to access each item
+- Lists of dictionaries for grouping several related values together, and looping directly over a list's items with `for item in list:` when position doesn't matter
+- Indexing a dictionary by string key (`d["key"]`) instead of an integer position, and using `None` to represent a missing or absent value
+- Customizing `print()`'s separator between multiple values with the `sep` keyword argument
+- Splitting a task across multiple functions that call one another (e.g. `main()` -> `print_square()` -> `print_row()`), and building a repeated string with the `*` operator (`"#" * width`)
