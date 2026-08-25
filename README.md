@@ -165,6 +165,18 @@ Repeating work with `while` and `for` loops.
 
   The script prints a 3x3 square of `#` characters, one row per line.
 
+#### Problem Set 2
+
+Exercises that put the Week 2 concepts into practice.
+
+- **[Problem Set/camel/camel.py](Week%202/Problem%20Set/camel/camel.py)** - "camelCase": converts a camelCase-formatted word or sentence into snake_case. Demonstrates:
+  - Iterating directly over the characters of a string with `for letter in words:`, rather than looping over its indices
+  - The string method `.isupper()`, which checks whether a single character is an uppercase letter
+  - Reassigning the loop variable (`words`) from inside the loop body: `for letter in words:` grabs its sequence of characters from the original string before the loop starts, so reassigning `words` partway through doesn't change which letters get visited next - it only affects what the final `return words` sends back
+  - Building the replacement text inline with `"_" + letter.lower()`, then passing it straight into `.replace(letter, ...)`, which swaps every occurrence of that character in the string, not just the one at the current position
+
+  The script asks for a camelCase word or sentence and prints it converted to snake_case, with each uppercase letter replaced by an underscore followed by its lowercase form (e.g. `helloWorld` becomes `hello_world`).
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -189,6 +201,7 @@ python "Week 1/Problem Set/meal/meal.py"
 python "Week 2/cat.py"
 python "Week 2/hogwarts.py"
 python "Week 2/mario.py"
+python "Week 2/Problem Set/camel/camel.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -210,6 +223,7 @@ python "Week 2/mario.py"
 - `cat.py` will prompt for a positive number and print "meow" that many times.
 - `hogwarts.py` will print each student's name, house, and patronus from a hardcoded list.
 - `mario.py` will print a 3x3 square made of `#` characters.
+- `camel.py` will prompt for a camelCase word or sentence and print it converted to snake_case.
 
 ## Learning Objectives
 
@@ -238,3 +252,5 @@ python "Week 2/mario.py"
 - Indexing a dictionary by string key (`d["key"]`) instead of an integer position, and using `None` to represent a missing or absent value
 - Customizing `print()`'s separator between multiple values with the `sep` keyword argument
 - Splitting a task across multiple functions that call one another (e.g. `main()` -> `print_square()` -> `print_row()`), and building a repeated string with the `*` operator (`"#" * width`)
+- Iterating directly over the characters of a string with `for letter in string:`, and checking a character's case with `.isupper()`
+- Understanding that a `for` loop captures its sequence of items up front, so reassigning the variable it's looping over from inside the loop body doesn't change which items get visited next
