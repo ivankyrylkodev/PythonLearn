@@ -185,6 +185,15 @@ Exercises that put the Week 2 concepts into practice.
 
   The script repeatedly prints how much is still due and asks for a coin (5, 10, or 25 cents), ignoring any other amount, until 50 cents has been inserted, then prints the change owed.
 
+- **[Problem Set/plates/plates.py](Week%202/Problem%20Set/plates/plates.py)** - "Vanity Plates": checks whether a proposed license plate follows the DMV's naming rules. Demonstrates:
+  - Looping over string *indices* with `for i in range(len(s)):` instead of characters directly, because each check needs to compare a character to its neighbor (`s[i-1]`), not just look at itself
+  - `.isnumeric()` to test whether a single character is a digit
+  - Negative indexing as a side effect of not guarding the first iteration: when `i` is `0`, `s[i-1]` evaluates to `s[-1]`, Python's way of indexing the *last* character - so the very first comparison in the loop quietly checks the first character against the last one, rather than skipping the check as the author likely intended
+  - Layering several independent validity rules in sequence, each able to `return False` immediately, with `return True` only reached at the very end once every rule has been checked
+  - Running a per-character loop first, then a separate `if` / `elif` / `else` afterward for whole-string checks (length, and whether the first two characters are letters) - so the function checks "is every character legal" before it checks "is the plate shaped correctly"
+
+  The script asks for a proposed license plate and prints `Valid` if it's 2 to 6 characters long, starts with at least two letters, contains no spaces or punctuation, has no letters after the first digit, and has no leading zero among its digits - otherwise it prints `Invalid`.
+
 - **[Problem Set/twttr/twttr.py](Week%202/Problem%20Set/twttr/twttr.py)** - "twttr": strips every vowel out of a line of text, the way Twitter's early name dropped its vowels. Demonstrates:
   - Iterating over the *original* characters of a string with `for letter in input_text:`, even though `input_text` is reassigned inside the loop body - the loop already captured its sequence of characters before the first reassignment happened, the same behavior noted in `camel.py`
   - The `in` operator to test membership in a string: `letter.lower() in "aeiou"` checks whether a single character appears anywhere in the string `"aeiou"`
@@ -219,6 +228,7 @@ python "Week 2/hogwarts.py"
 python "Week 2/mario.py"
 python "Week 2/Problem Set/camel/camel.py"
 python "Week 2/Problem Set/coke/coke.py"
+python "Week 2/Problem Set/plates/plates.py"
 python "Week 2/Problem Set/twttr/twttr.py"
 ```
 
@@ -243,6 +253,7 @@ python "Week 2/Problem Set/twttr/twttr.py"
 - `mario.py` will print a 3x3 square made of `#` characters.
 - `camel.py` will prompt for a camelCase word or sentence and print it converted to snake_case.
 - `coke.py` will repeatedly prompt for a coin (5, 10, or 25) until 50 cents has been inserted, then print the change owed.
+- `plates.py` will prompt for a proposed license plate and print `Valid` or `Invalid`.
 - `twttr.py` will prompt for a line of text and print it back with every vowel removed.
 
 ## Learning Objectives
@@ -277,3 +288,5 @@ python "Week 2/Problem Set/twttr/twttr.py"
 - Writing a `while` loop whose condition depends on a running total that's updated inside the loop body
 - Combining several equality checks with `or`, and using `continue` to skip the rest of a loop iteration and jump back to the condition
 - The `in` operator for checking whether a value appears within a string (membership testing)
+- Looping over string indices with `range(len(s))` to compare each character against a neighboring one, and the pitfall of negative indexing (`s[i-1]` wrapping to `s[-1]`) when the first iteration isn't guarded against
+- Chaining several independent validity rules together, each returning `False` immediately on failure, so a function only reaches `return True` once every rule has passed
