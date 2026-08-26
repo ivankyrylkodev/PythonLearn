@@ -177,6 +177,22 @@ Exercises that put the Week 2 concepts into practice.
 
   The script asks for a camelCase word or sentence and prints it converted to snake_case, with each uppercase letter replaced by an underscore followed by its lowercase form (e.g. `helloWorld` becomes `hello_world`).
 
+- **[Problem Set/coke/coke.py](Week%202/Problem%20Set/coke/coke.py)** - "Vending Machine": accepts coins one at a time until a $0.50 balance is met, then prints any change owed. Demonstrates:
+  - A `while` loop whose condition depends on a running total (`while insert_coin < 50:`), so it keeps looping until enough has been inserted
+  - Combining multiple equality checks with `or` (`add_coin == 5 or add_coin == 10 or add_coin == 25`) to accept any of several valid coin values
+  - The `continue` statement, which jumps straight back to the top of the loop - here, skipping the running total's update whenever an invalid coin value is entered, so the next iteration just re-prompts
+  - The augmented assignment operator `+=` to add each accepted coin onto the running total
+
+  The script repeatedly prints how much is still due and asks for a coin (5, 10, or 25 cents), ignoring any other amount, until 50 cents has been inserted, then prints the change owed.
+
+- **[Problem Set/twttr/twttr.py](Week%202/Problem%20Set/twttr/twttr.py)** - "twttr": strips every vowel out of a line of text, the way Twitter's early name dropped its vowels. Demonstrates:
+  - Iterating over the *original* characters of a string with `for letter in input_text:`, even though `input_text` is reassigned inside the loop body - the loop already captured its sequence of characters before the first reassignment happened, the same behavior noted in `camel.py`
+  - The `in` operator to test membership in a string: `letter.lower() in "aeiou"` checks whether a single character appears anywhere in the string `"aeiou"`
+  - Calling `.lower()` only to *check* whether a letter is a vowel, while leaving the original-case `letter` untouched, so `.replace(letter, "")` removes the exact character (uppercase or lowercase) that was actually found
+  - `.replace(letter, "")` removing every occurrence of that character from the current string in one call, not just the one at the current loop position
+
+  The script asks for a line of text and prints it back with every vowel (`a`, `e`, `i`, `o`, `u`, in either case) removed - e.g. `"twitter"` becomes `"twttr"`.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -202,6 +218,8 @@ python "Week 2/cat.py"
 python "Week 2/hogwarts.py"
 python "Week 2/mario.py"
 python "Week 2/Problem Set/camel/camel.py"
+python "Week 2/Problem Set/coke/coke.py"
+python "Week 2/Problem Set/twttr/twttr.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -224,6 +242,8 @@ python "Week 2/Problem Set/camel/camel.py"
 - `hogwarts.py` will print each student's name, house, and patronus from a hardcoded list.
 - `mario.py` will print a 3x3 square made of `#` characters.
 - `camel.py` will prompt for a camelCase word or sentence and print it converted to snake_case.
+- `coke.py` will repeatedly prompt for a coin (5, 10, or 25) until 50 cents has been inserted, then print the change owed.
+- `twttr.py` will prompt for a line of text and print it back with every vowel removed.
 
 ## Learning Objectives
 
@@ -254,3 +274,6 @@ python "Week 2/Problem Set/camel/camel.py"
 - Splitting a task across multiple functions that call one another (e.g. `main()` -> `print_square()` -> `print_row()`), and building a repeated string with the `*` operator (`"#" * width`)
 - Iterating directly over the characters of a string with `for letter in string:`, and checking a character's case with `.isupper()`
 - Understanding that a `for` loop captures its sequence of items up front, so reassigning the variable it's looping over from inside the loop body doesn't change which items get visited next
+- Writing a `while` loop whose condition depends on a running total that's updated inside the loop body
+- Combining several equality checks with `or`, and using `continue` to skip the rest of a loop iteration and jump back to the condition
+- The `in` operator for checking whether a value appears within a string (membership testing)
