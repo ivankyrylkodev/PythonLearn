@@ -185,6 +185,15 @@ Exercises that put the Week 2 concepts into practice.
 
   The script repeatedly prints how much is still due and asks for a coin (5, 10, or 25 cents), ignoring any other amount, until 50 cents has been inserted, then prints the change owed.
 
+- **[Problem Set/nutrition/nutrition.py](Week%202/Problem%20Set/nutrition/nutrition.py)** - "Nutrition Facts": looks up a fruit's calorie count. Demonstrates:
+  - A list of dictionaries as a lookup table, the same pattern used in `hogwarts.py`, here with `"name"` and `"calories"` keys instead of `"name"`, `"house"`, and `"patronus"`
+  - `for fruit in fruits:` looping directly over the list's items and comparing each one's `"name"` to the user's input, rather than looking the item up by index
+  - `break` to stop the loop as soon as a match is found, instead of continuing to check every remaining fruit once the answer is already known
+  - Nested f-string quoting: `f"Calories: {fruit["calories"]}"` uses double quotes both for the outer f-string and for the dictionary key inside its `{}` expression - a feature only available in Python 3.12+, which older Python versions reject as a syntax error
+  - If the input doesn't match any fruit in the list, the loop finishes without ever printing anything, since there's no `else` clause to handle that case
+
+  The script asks for the name of a fruit (e.g. `apple`) and prints its calorie count (e.g. `Calories: 130`) if it's found in the list, or prints nothing if it isn't.
+
 - **[Problem Set/plates/plates.py](Week%202/Problem%20Set/plates/plates.py)** - "Vanity Plates": checks whether a proposed license plate follows the DMV's naming rules. Demonstrates:
   - Looping over string *indices* with `for i in range(len(s)):` instead of characters directly, because each check needs to compare a character to its neighbor (`s[i-1]`), not just look at itself
   - `.isnumeric()` to test whether a single character is a digit
@@ -228,6 +237,7 @@ python "Week 2/hogwarts.py"
 python "Week 2/mario.py"
 python "Week 2/Problem Set/camel/camel.py"
 python "Week 2/Problem Set/coke/coke.py"
+python "Week 2/Problem Set/nutrition/nutrition.py"
 python "Week 2/Problem Set/plates/plates.py"
 python "Week 2/Problem Set/twttr/twttr.py"
 ```
@@ -253,6 +263,7 @@ python "Week 2/Problem Set/twttr/twttr.py"
 - `mario.py` will print a 3x3 square made of `#` characters.
 - `camel.py` will prompt for a camelCase word or sentence and print it converted to snake_case.
 - `coke.py` will repeatedly prompt for a coin (5, 10, or 25) until 50 cents has been inserted, then print the change owed.
+- `nutrition.py` will prompt for the name of a fruit and print its calorie count, or nothing if it isn't found.
 - `plates.py` will prompt for a proposed license plate and print `Valid` or `Invalid`.
 - `twttr.py` will prompt for a line of text and print it back with every vowel removed.
 
@@ -287,6 +298,8 @@ python "Week 2/Problem Set/twttr/twttr.py"
 - Understanding that a `for` loop captures its sequence of items up front, so reassigning the variable it's looping over from inside the loop body doesn't change which items get visited next
 - Writing a `while` loop whose condition depends on a running total that's updated inside the loop body
 - Combining several equality checks with `or`, and using `continue` to skip the rest of a loop iteration and jump back to the condition
+- Using `break` to exit a loop early once a matching item has been found, rather than continuing to check every remaining item
+- Nested double-quoted strings inside an f-string expression (`f"{d["key"]}"`), a Python 3.12+ feature
 - The `in` operator for checking whether a value appears within a string (membership testing)
 - Looping over string indices with `range(len(s))` to compare each character against a neighboring one, and the pitfall of negative indexing (`s[i-1]` wrapping to `s[-1]`) when the first iteration isn't guarded against
 - Chaining several independent validity rules together, each returning `False` immediately on failure, so a function only reaches `return True` once every rule has passed
