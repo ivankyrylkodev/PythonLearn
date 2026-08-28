@@ -211,6 +211,19 @@ Exercises that put the Week 2 concepts into practice.
 
   The script asks for a line of text and prints it back with every vowel (`a`, `e`, `i`, `o`, `u`, in either case) removed - e.g. `"twitter"` becomes `"twttr"`.
 
+### Week 3 - Exceptions
+
+Handling errors gracefully with `try` / `except`, instead of letting the program crash.
+
+- **[hello.py](Week%203/hello.py)** - The simplest possible Python program, printing `hello, world` with a single `print()` call. It marks the start of a new week's lecture code and has no other behavior.
+
+- **[number.py](Week%203/number.py)** - A number reader that demonstrates:
+  - Wrapping risky code in a `try` block, so an error inside it doesn't crash the whole program
+  - Catching a specific exception type with `except ValueError:`, which fires only when `int()` fails to parse its input (e.g. the user types text instead of a number) rather than catching every possible error
+  - Converting and using the input inside the same `try` block, so if `int(input(...))` raises, the `print()` line right after it never runs
+
+  The script asks the user for a number and prints it back (e.g. `x is 42`); if the input can't be converted to an integer, it prints `x is not an integer` instead of crashing with a traceback.
+
 ## Getting Started
 
 To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
@@ -240,6 +253,8 @@ python "Week 2/Problem Set/coke/coke.py"
 python "Week 2/Problem Set/nutrition/nutrition.py"
 python "Week 2/Problem Set/plates/plates.py"
 python "Week 2/Problem Set/twttr/twttr.py"
+python "Week 3/hello.py"
+python "Week 3/number.py"
 ```
 
 - `hello.py` will prompt for your name and print a greeting.
@@ -266,6 +281,8 @@ python "Week 2/Problem Set/twttr/twttr.py"
 - `nutrition.py` will prompt for the name of a fruit and print its calorie count, or nothing if it isn't found.
 - `plates.py` will prompt for a proposed license plate and print `Valid` or `Invalid`.
 - `twttr.py` will prompt for a line of text and print it back with every vowel removed.
+- `hello.py` (Week 3) will print `hello, world`.
+- `number.py` will prompt for a number and print it back, or print `x is not an integer` if the input isn't a valid number.
 
 ## Learning Objectives
 
@@ -303,3 +320,4 @@ python "Week 2/Problem Set/twttr/twttr.py"
 - The `in` operator for checking whether a value appears within a string (membership testing)
 - Looping over string indices with `range(len(s))` to compare each character against a neighboring one, and the pitfall of negative indexing (`s[i-1]` wrapping to `s[-1]`) when the first iteration isn't guarded against
 - Chaining several independent validity rules together, each returning `False` immediately on failure, so a function only reaches `return True` once every rule has passed
+- Handling errors with `try` / `except`, including catching a specific exception type (`except ValueError:`) instead of every possible error
