@@ -218,11 +218,13 @@ Handling errors gracefully with `try` / `except`, instead of letting the program
 - **[hello.py](Week%203/hello.py)** - The simplest possible Python program, printing `hello, world` with a single `print()` call. It marks the start of a new week's lecture code and has no other behavior.
 
 - **[number.py](Week%203/number.py)** - A number reader that demonstrates:
-  - Wrapping risky code in a `try` block, so an error inside it doesn't crash the whole program
+  - Splitting input-validation into its own helper function, `get_int(prompt)`, that `main()` calls and gets a value back from, rather than validating inline
+  - Wrapping the risky conversion in a `try` block, so a bad input doesn't crash the whole program
   - Catching a specific exception type with `except ValueError:`, which fires only when `int()` fails to parse its input (e.g. the user types text instead of a number) rather than catching every possible error
-  - Converting and using the input inside the same `try` block, so if `int(input(...))` raises, the `print()` line right after it never runs
+  - Combining `while True:` with a `return` inside the `try` block instead of a `break`: as soon as `int(input(prompt))` succeeds, that value is returned immediately, which also exits the loop - the loop only ever ends via a successful `return`, never by falling through
+  - `except ValueError: pass` - catching the error and doing nothing with it, so the loop simply repeats and silently re-prompts, instead of printing an error message first
 
-  The script asks the user for a number and prints it back (e.g. `x is 42`); if the input can't be converted to an integer, it prints `x is not an integer` instead of crashing with a traceback.
+  The script asks the user for a number and keeps silently re-asking (`What's x? `) for as long as the input can't be converted to an integer; once a valid integer is entered, it prints it back (e.g. `x is 42`).
 
 ## Getting Started
 
@@ -282,7 +284,7 @@ python "Week 3/number.py"
 - `plates.py` will prompt for a proposed license plate and print `Valid` or `Invalid`.
 - `twttr.py` will prompt for a line of text and print it back with every vowel removed.
 - `hello.py` (Week 3) will print `hello, world`.
-- `number.py` will prompt for a number and print it back, or print `x is not an integer` if the input isn't a valid number.
+- `number.py` will keep prompting for a number until valid input is entered, silently re-asking on anything that isn't a valid integer, then print it back.
 
 ## Learning Objectives
 
@@ -321,3 +323,4 @@ python "Week 3/number.py"
 - Looping over string indices with `range(len(s))` to compare each character against a neighboring one, and the pitfall of negative indexing (`s[i-1]` wrapping to `s[-1]`) when the first iteration isn't guarded against
 - Chaining several independent validity rules together, each returning `False` immediately on failure, so a function only reaches `return True` once every rule has passed
 - Handling errors with `try` / `except`, including catching a specific exception type (`except ValueError:`) instead of every possible error
+- Combining `try` / `except` with `while True:`, returning from inside the `try` block to exit the loop on success, and using `except ValueError: pass` to silently re-prompt on failure instead of printing an error
