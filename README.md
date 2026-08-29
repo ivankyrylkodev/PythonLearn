@@ -1,234 +1,96 @@
 # First Steps in Python
 
-A structured learning path through the fundamentals of Python programming. This repository contains hands-on exercises and projects organized by week.
+A structured learning path through Python fundamentals: hands-on exercises organized by week.
 
 ## Project Structure
 
 ### Week 0 - Introduction & Basics
 
-Getting started with Python fundamentals: functions, input/output, and basic arithmetic.
+Functions, input/output, and basic arithmetic.
 
-- **[hello.py](Week%200/hello.py)** - A simple greeting program that demonstrates:
-  - Defining and calling functions with `def`
-  - Reading user input with `input()`
-  - Default parameter values (`def hello(to="world")`) - if `hello()` is called without an argument, it falls back to `"world"`
-  - Passing a variable from one function into another
-  - Printing multiple values with `print()` by separating them with a comma
+- **[hello.py](Week%200/hello.py)** - Greeting program. Demonstrates `def`, `input()`, a default parameter (`def hello(to="world")`), passing a variable between functions, and printing multiple values with a comma. Asks for a name and greets it; `main()` is defined first but called last, so the file reads top-down while still working (Python only needs a function to exist by the time it's called).
 
-  The script asks for the user's name, then passes it to a `hello()` function that prints a greeting. `main()` is defined first but called last, after `hello()` has been defined, so that the file reads top-down like a table of contents while still running correctly (Python only needs a function to exist by the time it's *called*, not by the time it's *defined above*).
-
-- **[calculator.py](Week%200/calculator.py)** - A simple calculator that demonstrates:
-  - Converting input from a string to an integer with `int()`, since `input()` always returns text
-  - Defining a function that takes a parameter and returns a value (`def square(n): return pow(n, 2)`)
-  - Using the built-in `pow()` function to raise a number to a power
-  - Passing the result of one function call directly into another (`square(x)` inside `print()`)
-
-  The script asks the user for a number, squares it, and prints the result.
+- **[calculator.py](Week%200/calculator.py)** - Squares a number. Demonstrates `int()` conversion (since `input()` returns text), a function that takes a parameter and returns a value, `pow()`, and passing one function's result into another. Asks for a number and prints its square.
 
 #### Problem Set 0
 
-Exercises that put the Week 0 concepts into practice.
+- **[Problem Set/Indoor Voice/indoor.py](Week%200/Problem%20Set/Indoor%20Voice/indoor.py)** - "Indoor Voice". Demonstrates `input()` and `.lower()`, chained directly into `print()` with no intermediate variable. Prints a line of text back in lowercase.
 
-- **[Problem Set/Indoor Voice/indoor.py](Week%200/Problem%20Set/Indoor%20Voice/indoor.py)** - "Indoor Voice": converts shouted (all-caps) text into a normal, quiet sentence. Demonstrates:
-  - Reading a full line of text with `input()`
-  - String methods: `.lower()` converts every character in a string to lowercase
-  - Chaining a method call directly onto the result of `input()`, then passing that straight into `print()`, without storing an intermediate variable
+- **[Problem Set/playback/playback.py](Week%200/Problem%20Set/playback/playback.py)** - "Playback". Demonstrates `.replace(old, new)`, here replacing every space so words are separated by `"..."`. Turns "hello there" into "hello...there".
 
-  The script reads a line of text and prints it back entirely in lowercase, so an ALL-CAPS "outdoor voice" sentence reads as a calm "indoor voice" one.
+- **[Problem Set/faces/faces.py](Week%200/Problem%20Set/faces/faces.py)** - "Faces". Demonstrates chaining two `.replace()` calls back-to-back, and emoji as string literals. Swaps every `:)` for 🙂 and `:(` for 🙁.
 
-- **[Problem Set/playback/playback.py](Week%200/Problem%20Set/playback/playback.py)** - "Playback": simulates a slow, drawn-out way of speaking. Demonstrates:
-  - String methods: `.replace(old, new)` swaps every occurrence of one substring for another
-  - Using a space `" "` as the substring to search for, so the replacement happens between every word
+- **[Problem Set/einstein/einstein.py](Week%200/Problem%20Set/einstein/einstein.py)** - "Einstein" (E = mc²). Demonstrates `int()` used inline inside a larger expression, the `**` operator, and operator precedence (`**` binds tighter than `*`, so the speed of light is squared before multiplying by mass). Prints energy in joules from a mass in kg.
 
-  The script reads a line of text and prints it back with every space replaced by `"..."`, so "hello there" becomes "hello...there" - as if the sentence were being read out slowly.
-
-- **[Problem Set/faces/faces.py](Week%200/Problem%20Set/faces/faces.py)** - "Faces": converts text emoticons into emoji. Demonstrates:
-  - Chaining two `.replace()` calls back-to-back on the same string, so the second replacement runs on the output of the first
-  - Using emoji characters directly as string literals in Python source code
-
-  The script reads a line of text and prints it back with every `:)` swapped for 🙂 and every `:(` swapped for 🙁.
-
-- **[Problem Set/einstein/einstein.py](Week%200/Problem%20Set/einstein/einstein.py)** - "Einstein": calculates energy from mass using Einstein's mass-energy equivalence formula, E = mc². Demonstrates:
-  - Converting input to an integer with `int()` inline, directly inside a larger expression, instead of storing it in a separate variable first
-  - The exponentiation operator `**` (here, squaring the speed of light, `299792458 ** 2`)
-  - Operator precedence: `**` binds tighter than `*`, so `int(m) * 299792458 ** 2` squares the speed of light first, then multiplies by the mass
-
-  The script reads a mass in kilograms, multiplies it by the speed of light in meters per second squared, and prints the resulting energy in joules.
-
-- **[Problem Set/tip/tip.py](Week%200/Problem%20Set/tip/tip.py)** - "Tip Calculator": works out how much tip to leave from a bill amount and a tip percentage. Demonstrates:
-  - Helper functions that clean up input before converting it: `dollars_to_float()` strips a leading `$` with `.replace("$", "")` before calling `float()`; `percent_to_float()` strips a trailing `%` the same way, then divides by 100 so `"10"` becomes `0.1`
-  - Passing the raw string from `input()` straight into a helper function instead of storing it in a variable first
-  - Formatted string literals (f-strings): `f"Leave ${tip:.2f}"` embeds the `tip` variable directly inside the string, formatted to two decimal places with the `:.2f` format spec
-  - Multiplying two `float` values together to get the tip amount
-
-  The script asks for the cost of the meal (e.g. `$25.00`) and a tip percentage (e.g. `15%`), strips the `$` and `%` symbols, converts both to numbers, and prints how much to leave, rounded to two decimal places.
+- **[Problem Set/tip/tip.py](Week%200/Problem%20Set/tip/tip.py)** - "Tip Calculator". Demonstrates helper functions that clean input before converting (`dollars_to_float()` strips `$`, `percent_to_float()` strips `%` and divides by 100), passing a raw string straight into a helper, and f-strings with a format spec (`f"Leave ${tip:.2f}"`). Asks for a meal cost and tip percent, prints the tip owed.
 
 ### Week 1 - Conditionals
 
-Making decisions in code with `if`, `elif`, and `else`.
+Branching with `if`, `elif`, and `else`.
 
-- **[compare.py](Week%201/compare.py)** - A number comparison program that demonstrates:
-  - Reading two separate integer inputs with `int(input(...))`
-  - The equality operator `==`
-  - Branching with `if` / `else`, where the `else` branch catches every case the `if` didn't
+- **[compare.py](Week%201/compare.py)** - Demonstrates `int(input(...))`, `==`, and `if`/`else`. Prints whether two numbers are equal.
 
-  The script asks for two numbers, `x` and `y`, and prints whether `x` is equal to `y` or not.
+- **[grade.py](Week%201/grade.py)** - Demonstrates `>=` and an `if`/`elif`/`elif`/`elif`/`else` chain, where each branch only needs to rule out the next threshold down since conditions run top to bottom. Prints a letter grade (A 90+, B 80-89, C 70-79, D 60-69, F below 60).
 
-- **[grade.py](Week%201/grade.py)** - A letter-grade calculator that demonstrates:
-  - Reading a single integer input with `int(input(...))`
-  - Comparison operators: `>=`
-  - Branching with `if` / `elif` / `elif` / `elif` / `else`, where conditions are checked top to bottom and only the first true one runs - which is why each `elif` only needs to rule out the *next* threshold down, not repeat the ones above it
+- **[parity.py](Week%201/parity.py)** - Demonstrates returning a boolean expression directly (`return (n % 2 == 0)`), the modulo operator `%`, and using a function's return value as an `if` condition. Prints `Even` or `Odd`.
 
-  The script asks for a numeric score and prints the corresponding letter grade: A (90+), B (80-89), C (70-79), D (60-69), or F (below 60).
-
-- **[parity.py](Week%201/parity.py)** - An even/odd checker that demonstrates:
-  - Defining a function that returns a boolean expression directly (`return (n % 2 == 0)`) instead of computing a value first and returning it afterward
-  - The modulo operator `%`, which gives the remainder of a division - a number is even exactly when it leaves no remainder after dividing by 2
-  - Using a function's return value as the condition of an `if` statement (`if is_even(x):`)
-
-  The script asks for a number and prints whether it's `Even` or `Odd`.
-
-- **[house.py](Week%201/house.py)** - A Hogwarts house sorter that demonstrates:
-  - Structural pattern matching with `match` / `case`, an alternative to a long `if` / `elif` chain
-  - Matching several possible values in a single `case` with the `|` (or) pattern: `case "Harry" | "Hermione" | "Ron":`
-  - The wildcard pattern `case _:`, which matches anything not caught by an earlier `case` - the `match` equivalent of a final `else`
-
-  The script asks for a name and prints "Griffindor" for Harry, Hermione, or Ron, "Slytherin" for Draco, and "Who?" for anyone else.
+- **[house.py](Week%201/house.py)** - Hogwarts sorter. Demonstrates `match`/`case`, matching multiple values with `|` (`case "Harry" | "Hermione" | "Ron":`), and the `case _:` wildcard (match's version of `else`). Prints a house name or `Who?`.
 
 #### Problem Set 1
 
-Exercises that put the Week 1 concepts into practice.
+- **[Problem Set/bank/bank.py](Week%201/Problem%20Set/bank/bank.py)** - "Bank". Demonstrates chaining `.lower().strip()`, slicing (`[:5]`), indexing (`[0]`), and ordering `if`/`elif`/`else` from more to less specific. Prints `$0` for a greeting starting "hello", `$20` for just "h", `$100` otherwise.
 
-- **[Problem Set/bank/bank.py](Week%201/Problem%20Set/bank/bank.py)** - "Bank": a teller that greets a customer and quotes a balance based on how they say hello. Demonstrates:
-  - Chaining `.lower()` and `.strip()` together on the result of `input()`, so the check that follows doesn't care about capitalization or stray leading/trailing whitespace
-  - Slicing a string with `[:5]` to grab just its first 5 characters, so `greeting[:5] == "hello"` matches "hello there" as well as a bare "hello"
-  - Indexing a single character out of a string with `[0]`
-  - Branching with `if` / `elif` / `else`, where the more specific check (`greeting[:5] == "hello"`) is tested before the looser one (`greeting[0] == "h"`), since `elif` only runs if every check above it was false
+- **[Problem Set/deep/deep.py](Week%201/Problem%20Set/deep/deep.py)** - "Deep Thought". Demonstrates `.lower()` on input, and `match`/`case` matching several spellings ("42", "forty-two", "forty two") with `|`. Prints `Yes` for any form of 42, else `No`.
 
-  The script asks for a greeting and prints `$0` if it starts with "hello", `$20` if it merely starts with "h" (e.g. "hi"), or `$100` for anything else.
+- **[Problem Set/extensions/extensions.py](Week%201/Problem%20Set/extensions/extensions.py)** - "File Extensions". Demonstrates chaining `.strip().lower().split(".")`, grabbing the last list element with `file[len(file) - 1]` (so extra dots in a filename don't break it), and `match`/`case` with `|` and a `case _:` fallback. Prints the MIME type for a filename's extension, or `application/octet-stream`.
 
-- **[Problem Set/deep/deep.py](Week%201/Problem%20Set/deep/deep.py)** - "Deep Thought": answers the ultimate question, Hitchhiker's-Guide style. Demonstrates:
-  - Calling `.lower()` on `input()`'s result so the answer matches regardless of how it was typed
-  - `match` / `case` again, this time matching several different spellings of the same answer with `|` ("42", "forty-two", "forty two")
-  - The `case _:` wildcard catching every other response
+- **[Problem Set/interpreter/interpreter.py](Week%201/Problem%20Set/interpreter/interpreter.py)** - "Interpreter". Demonstrates tuple unpacking (`x, symb, y = expression.split(" ")`), `match`/`case` on an operator symbol, converting operands to `float()` per case, and `case _:`. Evaluates `3 + 4`-style expressions, or prints `Unknown operation`.
 
-  The script asks for the Answer to the Great Question of Life, the Universe, and Everything, and prints "Yes" if it's some form of "42", or "No" otherwise.
-
-- **[Problem Set/extensions/extensions.py](Week%201/Problem%20Set/extensions/extensions.py)** - "File Extensions": looks at a filename and prints the MIME type that matches its extension. Demonstrates:
-  - Chaining `.strip().lower().split(".")` on the result of `input()`, turning the filename into a list of its dot-separated parts in one step
-  - Grabbing the last element of that list with `file[len(file) - 1]`, so the extension is found correctly even if the filename itself contains dots (e.g. `my.notes.txt`)
-  - `match` / `case` matching several extensions to the same MIME type with `|` (e.g. `case "jpg" | "jpeg":`)
-  - `case _:` falling back to the generic `application/octet-stream` type for any unrecognized extension
-
-  The script asks for a filename and prints its MIME type - `image/gif`, `image/jpeg`, `image/png`, `application/pdf`, `text/plain`, or `application/zip` - or `application/octet-stream` if the extension isn't recognized.
-
-- **[Problem Set/interpreter/interpreter.py](Week%201/Problem%20Set/interpreter/interpreter.py)** - "Interpreter": a small four-function calculator that reads and evaluates a whole expression from a single line of input. Demonstrates:
-  - Tuple unpacking: `x, symb, y = expression.split(" ")` splits `"3 + 4"` into three separate variables in one line, since `.split(" ")` on a string with two spaces returns a list of exactly three items
-  - `match` / `case` branching on the operator symbol (`+`, `-`, `*`, `/`)
-  - Converting both operands to `float()` inside each `case`, since splitting a string always produces strings, not numbers
-  - `case _:` catching any symbol that isn't a recognized operator
-
-  The script asks for an expression like `3 + 4`, and prints the result of applying the operator to the two numbers, or `Unknown operation` if the symbol isn't `+`, `-`, `*`, or `/`.
-
-- **[Problem Set/meal/meal.py](Week%201/Problem%20Set/meal/meal.py)** - "Meal Time": decides whether a given clock time falls within breakfast, lunch, or dinner. Demonstrates:
-  - Splitting work across a `main()` function and a `convert()` helper function, run in that order at the bottom of the file via `if __name__ == "__main__":` - a standard way to mark which function should run when the file is executed directly
-  - Converting an `"HH:MM"` string into a single fractional-hour number: `time.split(":")` breaks it into hours and minutes, then `int(time[0]) + int(time[1])/60` combines them (e.g. `"7:30"` becomes `7.5`)
-  - Chained comparisons: `7 <= con_time <= 8` reads like the mathematical notation and checks both bounds at once, equivalent to `7 <= con_time and con_time <= 8`
-  - An `if` / `elif` chain with no final `else` - if the time doesn't fall in any of the three windows, the script simply prints nothing
-
-  The script asks for the time (e.g. `7:30`), converts it to a fractional hour, and prints `breakfast time`, `lunch time`, or `dinner time` if it falls in the corresponding window - otherwise it prints nothing.
+- **[Problem Set/meal/meal.py](Week%201/Problem%20Set/meal/meal.py)** - "Meal Time". Demonstrates splitting work between `main()` and a `convert()` helper via `if __name__ == "__main__":`, converting `"HH:MM"` to a fractional hour, chained comparisons (`7 <= con_time <= 8`), and an `if`/`elif` chain with no `else` (prints nothing if no window matches). Prints `breakfast time`, `lunch time`, or `dinner time`.
 
 ### Week 2 - Loops
 
-Repeating work with `while` and `for` loops.
+Repeating work with `while` and `for`.
 
-- **[cat.py](Week%202/cat.py)** - A "meow" printer that demonstrates:
-  - An input-validation loop: `while True:` repeats forever until an explicit `break`, which here only fires once the entered number is greater than 0 - so invalid input (zero, negative, or unparseable text) just asks again instead of crashing or continuing with a bad value
-  - Splitting the program into three functions - `main()`, `get_number()`, and `meow()` - so reading/validating input is kept separate from acting on it
-  - `for _ in range(n):` to repeat an action exactly `n` times; the underscore `_` is a conventional throwaway variable name used when the loop needs a counter to control repetition but never actually uses its value
+- **[cat.py](Week%202/cat.py)** - Demonstrates an input-validation loop (`while True:` plus `break`), splitting work across `main()`/`get_number()`/`meow()`, and `for _ in range(n):` with `_` as a throwaway variable. Prints "meow" `n` times, re-prompting until `n > 0`.
 
-  The script asks for a positive whole number and prints "meow" that many times, re-prompting if the number entered isn't greater than 0.
+- **[hogwarts.py](Week%202/hogwarts.py)** - Demonstrates a list of dictionaries, looping directly over items (not indices) with `for student in students:`, string-key dictionary indexing, the `sep` argument to `print()`, and `None` for missing data. Prints each student's name, house, and patronus.
 
-- **[hogwarts.py](Week%202/hogwarts.py)** - A student roster printer that demonstrates:
-  - A list of dictionaries, `students = [{"name": "Hermione", "house": "Gryffindor", "patronus": "Otter"}, ...]`, where each item bundles several related values under named keys instead of just one value per position
-  - `for student in students:` looping directly over the *items* of a list, rather than over its indices, since each iteration doesn't need to know its position
-  - Indexing into a dictionary with a string key, `student["name"]`, instead of an integer position
-  - The `sep` keyword argument to `print()`: `print(a, b, c, sep=", ")` joins the values with `", "` instead of `print()`'s default single space
-  - Using `None` as a dictionary value to represent "no data" - Draco's `"patronus"` is `None` because he doesn't have one, and `print()` displays it as the literal text `None`
-
-  The script loops over the `students` list and, for each student, prints their name, house, and patronus (or `None` if they don't have one), separated by commas.
-
-- **[mario.py](Week%202/mario.py)** - A solid square drawn out of `#` characters, demonstrating:
-  - Splitting drawing logic across three functions - `main()`, `print_square(size)`, and `print_row(width)` - where each function calls the next, so `main()` doesn't need to know how a row is actually drawn
-  - `for i in range(size):` used purely to repeat an action `size` times; like the `_` convention seen in `cat.py`, the loop variable `i` is never read inside the loop body
-  - The string repetition operator `*`: `"#" * width` builds a row by repeating the single-character string `"#"` `width` times, rather than looping over individual characters
-
-  The script prints a 3x3 square of `#` characters, one row per line.
+- **[mario.py](Week%202/mario.py)** - Demonstrates splitting logic across `main()`/`print_square(size)`/`print_row(width)`, `for i in range(size):` with an unused loop variable, and the string repetition operator (`"#" * width`). Prints a 3x3 square of `#`.
 
 #### Problem Set 2
 
-Exercises that put the Week 2 concepts into practice.
+- **[Problem Set/camel/camel.py](Week%202/Problem%20Set/camel/camel.py)** - "camelCase" to snake_case. Demonstrates iterating over string characters directly, `.isupper()`, and that a `for` loop captures its sequence up front - reassigning the loop variable (`words`) inside the loop doesn't change what gets visited next. Turns `helloWorld` into `hello_world`.
 
-- **[Problem Set/camel/camel.py](Week%202/Problem%20Set/camel/camel.py)** - "camelCase": converts a camelCase-formatted word or sentence into snake_case. Demonstrates:
-  - Iterating directly over the characters of a string with `for letter in words:`, rather than looping over its indices
-  - The string method `.isupper()`, which checks whether a single character is an uppercase letter
-  - Reassigning the loop variable (`words`) from inside the loop body: `for letter in words:` grabs its sequence of characters from the original string before the loop starts, so reassigning `words` partway through doesn't change which letters get visited next - it only affects what the final `return words` sends back
-  - Building the replacement text inline with `"_" + letter.lower()`, then passing it straight into `.replace(letter, ...)`, which swaps every occurrence of that character in the string, not just the one at the current position
+- **[Problem Set/coke/coke.py](Week%202/Problem%20Set/coke/coke.py)** - "Vending Machine". Demonstrates a `while` loop driven by a running total, combining equality checks with `or`, `continue` to skip an invalid coin's update, and `+=`. Accepts 5/10/25-cent coins until 50 cents is reached, then prints change owed.
 
-  The script asks for a camelCase word or sentence and prints it converted to snake_case, with each uppercase letter replaced by an underscore followed by its lowercase form (e.g. `helloWorld` becomes `hello_world`).
+- **[Problem Set/nutrition/nutrition.py](Week%202/Problem%20Set/nutrition/nutrition.py)** - "Nutrition Facts". Demonstrates a list of dictionaries as a lookup table, looping over items to compare a key, `break` on match, and nested double-quoted f-string keys (`f"Calories: {fruit["calories"]}"`, Python 3.12+). Prints a fruit's calories, or nothing if not found.
 
-- **[Problem Set/coke/coke.py](Week%202/Problem%20Set/coke/coke.py)** - "Vending Machine": accepts coins one at a time until a $0.50 balance is met, then prints any change owed. Demonstrates:
-  - A `while` loop whose condition depends on a running total (`while insert_coin < 50:`), so it keeps looping until enough has been inserted
-  - Combining multiple equality checks with `or` (`add_coin == 5 or add_coin == 10 or add_coin == 25`) to accept any of several valid coin values
-  - The `continue` statement, which jumps straight back to the top of the loop - here, skipping the running total's update whenever an invalid coin value is entered, so the next iteration just re-prompts
-  - The augmented assignment operator `+=` to add each accepted coin onto the running total
+- **[Problem Set/plates/plates.py](Week%202/Problem%20Set/plates/plates.py)** - "Vanity Plates". Demonstrates looping over indices with `range(len(s))` to compare neighboring characters, `.isnumeric()`, and a negative-indexing quirk: on `i == 0`, `s[i-1]` becomes `s[-1]` (the last character), so the first comparison unintentionally checks first against last. Also layers independent rules that each `return False` immediately, with `return True` only at the end. Prints `Valid`/`Invalid` per DMV-style plate rules.
 
-  The script repeatedly prints how much is still due and asks for a coin (5, 10, or 25 cents), ignoring any other amount, until 50 cents has been inserted, then prints the change owed.
-
-- **[Problem Set/nutrition/nutrition.py](Week%202/Problem%20Set/nutrition/nutrition.py)** - "Nutrition Facts": looks up a fruit's calorie count. Demonstrates:
-  - A list of dictionaries as a lookup table, the same pattern used in `hogwarts.py`, here with `"name"` and `"calories"` keys instead of `"name"`, `"house"`, and `"patronus"`
-  - `for fruit in fruits:` looping directly over the list's items and comparing each one's `"name"` to the user's input, rather than looking the item up by index
-  - `break` to stop the loop as soon as a match is found, instead of continuing to check every remaining fruit once the answer is already known
-  - Nested f-string quoting: `f"Calories: {fruit["calories"]}"` uses double quotes both for the outer f-string and for the dictionary key inside its `{}` expression - a feature only available in Python 3.12+, which older Python versions reject as a syntax error
-  - If the input doesn't match any fruit in the list, the loop finishes without ever printing anything, since there's no `else` clause to handle that case
-
-  The script asks for the name of a fruit (e.g. `apple`) and prints its calorie count (e.g. `Calories: 130`) if it's found in the list, or prints nothing if it isn't.
-
-- **[Problem Set/plates/plates.py](Week%202/Problem%20Set/plates/plates.py)** - "Vanity Plates": checks whether a proposed license plate follows the DMV's naming rules. Demonstrates:
-  - Looping over string *indices* with `for i in range(len(s)):` instead of characters directly, because each check needs to compare a character to its neighbor (`s[i-1]`), not just look at itself
-  - `.isnumeric()` to test whether a single character is a digit
-  - Negative indexing as a side effect of not guarding the first iteration: when `i` is `0`, `s[i-1]` evaluates to `s[-1]`, Python's way of indexing the *last* character - so the very first comparison in the loop quietly checks the first character against the last one, rather than skipping the check as the author likely intended
-  - Layering several independent validity rules in sequence, each able to `return False` immediately, with `return True` only reached at the very end once every rule has been checked
-  - Running a per-character loop first, then a separate `if` / `elif` / `else` afterward for whole-string checks (length, and whether the first two characters are letters) - so the function checks "is every character legal" before it checks "is the plate shaped correctly"
-
-  The script asks for a proposed license plate and prints `Valid` if it's 2 to 6 characters long, starts with at least two letters, contains no spaces or punctuation, has no letters after the first digit, and has no leading zero among its digits - otherwise it prints `Invalid`.
-
-- **[Problem Set/twttr/twttr.py](Week%202/Problem%20Set/twttr/twttr.py)** - "twttr": strips every vowel out of a line of text, the way Twitter's early name dropped its vowels. Demonstrates:
-  - Iterating over the *original* characters of a string with `for letter in input_text:`, even though `input_text` is reassigned inside the loop body - the loop already captured its sequence of characters before the first reassignment happened, the same behavior noted in `camel.py`
-  - The `in` operator to test membership in a string: `letter.lower() in "aeiou"` checks whether a single character appears anywhere in the string `"aeiou"`
-  - Calling `.lower()` only to *check* whether a letter is a vowel, while leaving the original-case `letter` untouched, so `.replace(letter, "")` removes the exact character (uppercase or lowercase) that was actually found
-  - `.replace(letter, "")` removing every occurrence of that character from the current string in one call, not just the one at the current loop position
-
-  The script asks for a line of text and prints it back with every vowel (`a`, `e`, `i`, `o`, `u`, in either case) removed - e.g. `"twitter"` becomes `"twttr"`.
+- **[Problem Set/twttr/twttr.py](Week%202/Problem%20Set/twttr/twttr.py)** - "twttr". Demonstrates iterating over a string's original characters even after it's reassigned mid-loop (same captured-sequence behavior as `camel.py`), the `in` membership operator, and checking `.lower()` while replacing the original-case character. Strips vowels: `"twitter"` becomes `"twttr"`.
 
 ### Week 3 - Exceptions
 
-Handling errors gracefully with `try` / `except`, instead of letting the program crash.
+Handling errors with `try`/`except` instead of crashing.
 
-- **[hello.py](Week%203/hello.py)** - The simplest possible Python program, printing `hello, world` with a single `print()` call. It marks the start of a new week's lecture code and has no other behavior.
+- **[hello.py](Week%203/hello.py)** - Simplest possible program: prints `hello, world`.
 
-- **[number.py](Week%203/number.py)** - A number reader that demonstrates:
-  - Splitting input-validation into its own helper function, `get_int(prompt)`, that `main()` calls and gets a value back from, rather than validating inline
-  - Wrapping the risky conversion in a `try` block, so a bad input doesn't crash the whole program
-  - Catching a specific exception type with `except ValueError:`, which fires only when `int()` fails to parse its input (e.g. the user types text instead of a number) rather than catching every possible error
-  - Combining `while True:` with a `return` inside the `try` block instead of a `break`: as soon as `int(input(prompt))` succeeds, that value is returned immediately, which also exits the loop - the loop only ever ends via a successful `return`, never by falling through
-  - `except ValueError: pass` - catching the error and doing nothing with it, so the loop simply repeats and silently re-prompts, instead of printing an error message first
+- **[number.py](Week%203/number.py)** - Demonstrates a `get_int(prompt)` helper, wrapping a risky conversion in `try`, catching a specific type with `except ValueError:`, returning from inside `try` to both produce a value and exit a `while True:` loop, and `except ValueError: pass` to silently re-prompt. Keeps asking until a valid integer is entered, then prints it.
 
-  The script asks the user for a number and keeps silently re-asking (`What's x? `) for as long as the input can't be converted to an integer; once a valid integer is entered, it prints it back (e.g. `x is 42`).
+#### Problem Set 3
+
+- **[Problem Set/fuel/fuel.py](Week%203/Problem%20Set/fuel/fuel.py)** - "Fuel Gauge". Demonstrates tuple unpacking a split fraction (`x, y = input(...).split("/")`), validating with a chained `or` and `pass` inside a `try`, catching two exception types at once (`except (ValueError, ZeroDivisionError):`), and truncating a division to a whole-number percentage. Prints `E` (≤1%), `F` (≥99%), or a percentage.
+
+- **[Problem Set/grocery/grocery.py](Week%203/Problem%20Set/grocery/grocery.py)** - "Grocery List". Demonstrates a dictionary used as a counter (increment or initialize on `if item in groc:`), catching `EOFError` (raised when `input()` has no more data, e.g. Ctrl+D) as the loop's only exit, `.strip().upper()` normalization, and `sorted()` for alphabetical output. Tallies items typed until end-of-input, e.g. `2 APPLE`.
+
+- **[Problem Set/outdated/outdated.py](Week%203/Problem%20Set/outdated/outdated.py)** - "Outdated" date converter. Demonstrates a month-name list used both to validate and, via `.index()`, convert to a number; branching on `"/" in user_date`; tuple unpacking twice over for each format; a shared day-count validity check (treats February as always 28 days, so `2/29/2024` is rejected); and zero-padding with `:02`. Quirk: the numeric-format guard `0 < int(m) < 12` excludes 12, so numeric December dates are silently rejected even though December is valid everywhere else in the file. Converts `8/1/2023` or `August 1, 2023` to `2023-08-01`.
+
+- **[Problem Set/taqueria/taqueria.py](Week%203/Problem%20Set/taqueria/taqueria.py)** - "Taqueria" order total. Demonstrates a dictionary as a price lookup table, `.strip().title()` to match case-sensitive keys, letting a missing key raise `KeyError` naturally instead of checking membership first, `except KeyError: pass` to ignore unknown items, and `except EOFError: break`. Prints a running total after each valid item until input ends.
 
 ## Getting Started
 
-To run any of the Python files, use `python` followed by the path in quotes (the quotes matter because the folder names contain spaces):
+Run any file with `python` and its quoted path (folder names contain spaces):
 
 ```bash
 python "Week 0/hello.py"
@@ -257,70 +119,64 @@ python "Week 2/Problem Set/plates/plates.py"
 python "Week 2/Problem Set/twttr/twttr.py"
 python "Week 3/hello.py"
 python "Week 3/number.py"
+python "Week 3/Problem Set/fuel/fuel.py"
+python "Week 3/Problem Set/grocery/grocery.py"
+python "Week 3/Problem Set/outdated/outdated.py"
+python "Week 3/Problem Set/taqueria/taqueria.py"
 ```
 
-- `hello.py` will prompt for your name and print a greeting.
-- `calculator.py` will prompt for a number and print its square.
-- `indoor.py` will prompt for a line of text and print it back in lowercase.
-- `playback.py` will prompt for a line of text and print it back with spaces replaced by `"..."`.
-- `faces.py` will prompt for a line of text and print it back with `:)` and `:(` replaced by emoji.
-- `einstein.py` will prompt for a mass (in kg) and print the equivalent energy (in joules).
-- `tip.py` will prompt for a meal cost and a tip percentage, then print how much tip to leave.
-- `compare.py` will prompt for two numbers, `x` and `y`, and print whether `x` is equal to `y` or not.
-- `grade.py` will prompt for a score and print the corresponding letter grade.
-- `house.py` will prompt for a name and print the matching Hogwarts house, or `Who?` if it doesn't recognize the name.
-- `parity.py` will prompt for a number and print whether it's `Even` or `Odd`.
-- `bank.py` will prompt for a greeting and print `$0`, `$20`, or `$100` depending on how it starts.
-- `deep.py` will prompt for the Answer to the Great Question of Life, the Universe, and Everything and print `Yes` or `No`.
-- `extensions.py` will prompt for a filename and print its MIME type based on the extension.
-- `interpreter.py` will prompt for an expression (e.g. `3 + 4`) and print the result.
-- `meal.py` will prompt for a time (e.g. `7:30`) and print whether it's breakfast, lunch, or dinner time.
-- `cat.py` will prompt for a positive number and print "meow" that many times.
-- `hogwarts.py` will print each student's name, house, and patronus from a hardcoded list.
-- `mario.py` will print a 3x3 square made of `#` characters.
-- `camel.py` will prompt for a camelCase word or sentence and print it converted to snake_case.
-- `coke.py` will repeatedly prompt for a coin (5, 10, or 25) until 50 cents has been inserted, then print the change owed.
-- `nutrition.py` will prompt for the name of a fruit and print its calorie count, or nothing if it isn't found.
-- `plates.py` will prompt for a proposed license plate and print `Valid` or `Invalid`.
-- `twttr.py` will prompt for a line of text and print it back with every vowel removed.
-- `hello.py` (Week 3) will print `hello, world`.
-- `number.py` will keep prompting for a number until valid input is entered, silently re-asking on anything that isn't a valid integer, then print it back.
+- `hello.py` (Week 0) - prompts for a name, prints a greeting.
+- `calculator.py` - prompts for a number, prints its square.
+- `indoor.py` - lowercases a line of text.
+- `playback.py` - replaces spaces with `"..."`.
+- `faces.py` - replaces `:)`/`:(` with emoji.
+- `einstein.py` - mass (kg) to energy (joules).
+- `tip.py` - meal cost + tip % to tip owed.
+- `compare.py` - are `x` and `y` equal?
+- `grade.py` - score to letter grade.
+- `house.py` - name to Hogwarts house, or `Who?`.
+- `parity.py` - `Even` or `Odd`.
+- `bank.py` - greeting to `$0`/`$20`/`$100`.
+- `deep.py` - is the answer 42? `Yes`/`No`.
+- `extensions.py` - filename to MIME type.
+- `interpreter.py` - evaluates `3 + 4`-style expressions.
+- `meal.py` - time to breakfast/lunch/dinner.
+- `cat.py` - prints "meow" `n` times.
+- `hogwarts.py` - prints the student roster.
+- `mario.py` - prints a 3x3 `#` square.
+- `camel.py` - camelCase to snake_case.
+- `coke.py` - accepts coins, prints change owed.
+- `nutrition.py` - fruit to calorie count.
+- `plates.py` - `Valid`/`Invalid` license plate.
+- `twttr.py` - strips vowels from text.
+- `hello.py` (Week 3) - prints `hello, world`.
+- `number.py` - re-prompts until a valid integer, then prints it.
+- `fuel.py` - fraction to `E`/`F`/percentage.
+- `grocery.py` - tallies items until Ctrl+D.
+- `outdated.py` - date to `YYYY-MM-DD`.
+- `taqueria.py` - running order total until Ctrl+D.
 
 ## Learning Objectives
 
-- Basic Python syntax and structure
-- Defining and calling functions, including functions with default parameter values
-- Input/output operations, including converting input strings to numbers
-- Returning values from functions vs. printing directly
-- Using built-in functions like `pow()`, and the equivalent `**` exponentiation operator
-- Working with string methods like `.lower()` and `.replace()`, including chaining multiple method calls together
-- Operator precedence in arithmetic expressions
-- Converting strings to `float` values, and cleaning up input (stripping symbols like `$` and `%`) before converting it
-- Formatting output with f-strings, including format specs like `:.2f` for two decimal places
-- Comparison operators (`==`, `>=`) and branching with `if` / `elif` / `else`
-- Structural pattern matching with `match` / `case`, including combining values with `|` and the `case _:` wildcard
-- The modulo operator `%` and returning boolean expressions directly from a function
-- String slicing (`[:5]`) and indexing (`[0]`) to inspect part of a string
-- Ordering `if` / `elif` checks from most to least specific
-- Tuple unpacking to split one string into several variables at once (`x, symb, y = expression.split(" ")`)
-- Chained comparisons (`7 <= con_time <= 8`) as a shorthand for combining two bounds with `and`
-- Splitting work between a `main()` function and helper functions, run via `if __name__ == "__main__":`
-- Indexing from the end of a list with `list[len(list) - 1]` to handle inputs of varying length (e.g. filenames with extra dots)
-- Input-validation loops with `while True:` and `break`, so invalid input is silently re-prompted instead of crashing the program
-- Repeating an action a fixed number of times with `for _ in range(n):`, using `_` as a throwaway variable when the loop counter's value isn't needed
-- List literals and looping over list indices with `for i in range(len(list)):`, then indexing with `list[i]` to access each item
-- Lists of dictionaries for grouping several related values together, and looping directly over a list's items with `for item in list:` when position doesn't matter
-- Indexing a dictionary by string key (`d["key"]`) instead of an integer position, and using `None` to represent a missing or absent value
-- Customizing `print()`'s separator between multiple values with the `sep` keyword argument
-- Splitting a task across multiple functions that call one another (e.g. `main()` -> `print_square()` -> `print_row()`), and building a repeated string with the `*` operator (`"#" * width`)
-- Iterating directly over the characters of a string with `for letter in string:`, and checking a character's case with `.isupper()`
-- Understanding that a `for` loop captures its sequence of items up front, so reassigning the variable it's looping over from inside the loop body doesn't change which items get visited next
-- Writing a `while` loop whose condition depends on a running total that's updated inside the loop body
-- Combining several equality checks with `or`, and using `continue` to skip the rest of a loop iteration and jump back to the condition
-- Using `break` to exit a loop early once a matching item has been found, rather than continuing to check every remaining item
-- Nested double-quoted strings inside an f-string expression (`f"{d["key"]}"`), a Python 3.12+ feature
-- The `in` operator for checking whether a value appears within a string (membership testing)
-- Looping over string indices with `range(len(s))` to compare each character against a neighboring one, and the pitfall of negative indexing (`s[i-1]` wrapping to `s[-1]`) when the first iteration isn't guarded against
-- Chaining several independent validity rules together, each returning `False` immediately on failure, so a function only reaches `return True` once every rule has passed
-- Handling errors with `try` / `except`, including catching a specific exception type (`except ValueError:`) instead of every possible error
-- Combining `try` / `except` with `while True:`, returning from inside the `try` block to exit the loop on success, and using `except ValueError: pass` to silently re-prompt on failure instead of printing an error
+- Basic syntax, functions (`def`), default parameters, and I/O with `input()`/`print()`
+- Converting input strings to `int`/`float`, and returning vs. printing values
+- `pow()` and `**`, and operator precedence
+- String methods (`.lower()`, `.replace()`, `.strip()`, `.upper()`, `.title()`, `.isupper()`, `.isnumeric()`) and chaining them
+- Cleaning input (stripping symbols) before conversion; f-strings and format specs (`:.2f`, `:02`)
+- Comparison operators and `if`/`elif`/`else`, ordered most- to least-specific
+- `match`/`case`, combining values with `|`, and the `case _:` wildcard
+- Modulo (`%`), boolean expressions returned directly, string slicing/indexing (`[:5]`, `[0]`, `[-1]`)
+- Tuple unpacking (`x, y = s.split(...)`) and chained comparisons (`a <= x <= b`)
+- `main()` plus helpers, run via `if __name__ == "__main__":`
+- Input-validation loops (`while True:` + `break`), and `for _ in range(n):` with `_` as a throwaway variable
+- Looping over list/string items vs. indices; `list[len(list) - 1]` and `range(len(s))` for neighbor comparisons
+- Lists of dictionaries and dictionaries as flat lookup tables/counters; string-key indexing and `None` for missing data
+- `print()`'s `sep` argument; building repeated strings with `*`
+- A `for` loop capturing its sequence up front, so reassigning the loop variable mid-loop doesn't change iteration
+- Running totals with `+=`; combining checks with `or`; `continue` vs. `break`
+- Nested double-quoted f-string keys (Python 3.12+); the `in` membership operator
+- Negative-indexing pitfalls (`s[-1]`) from unguarded first iterations
+- Chaining independent validity rules that each `return False` immediately
+- `try`/`except`, catching specific/multiple exception types (`except (A, B):`), and `except ...: pass` to silently retry
+- `EOFError` for end-of-input as a loop's exit condition; `KeyError` from a missing dict key driving control flow instead of a membership check first
+- Reusing a list to both validate membership and convert via `.index()`
