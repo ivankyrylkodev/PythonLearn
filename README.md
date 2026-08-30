@@ -84,9 +84,19 @@ Handling errors with `try`/`except` instead of crashing.
 
 - **[Problem Set/grocery/grocery.py](Week%203/Problem%20Set/grocery/grocery.py)** - "Grocery List". Demonstrates a dictionary used as a counter (increment or initialize on `if item in groc:`), catching `EOFError` (raised when `input()` has no more data, e.g. Ctrl+D) as the loop's only exit, `.strip().upper()` normalization, and `sorted()` for alphabetical output. Tallies items typed until end-of-input, e.g. `2 APPLE`.
 
-- **[Problem Set/outdated/outdated.py](Week%203/Problem%20Set/outdated/outdated.py)** - "Outdated" date converter. Demonstrates a month-name list used both to validate and, via `.index()`, convert to a number; branching on `"/" in user_date`; tuple unpacking twice over for each format; a shared day-count validity check (treats February as always 28 days, so `2/29/2024` is rejected); and zero-padding with `:02`. Quirk: the numeric-format guard `0 < int(m) < 12` excludes 12, so numeric December dates are silently rejected even though December is valid everywhere else in the file. Converts `8/1/2023` or `August 1, 2023` to `2023-08-01`.
+- **[Problem Set/outdated/outdated.py](Week%203/Problem%20Set/outdated/outdated.py)** - "Outdated" date converter. Demonstrates a month-name list used both to validate and, via `.index()`, convert to a number; branching on `"/" in user_date`; tuple unpacking twice over for each format; a shared day-count validity check (treats February as always 28 days, so `2/29/2024` is rejected even in a leap year); and zero-padding with `:02`. Converts `8/1/2023` or `August 1, 2023` to `2023-08-01`.
 
 - **[Problem Set/taqueria/taqueria.py](Week%203/Problem%20Set/taqueria/taqueria.py)** - "Taqueria" order total. Demonstrates a dictionary as a price lookup table, `.strip().title()` to match case-sensitive keys, letting a missing key raise `KeyError` naturally instead of checking membership first, `except KeyError: pass` to ignore unknown items, and `except EOFError: break`. Prints a running total after each valid item until input ends.
+
+### Week 4 - Libraries
+
+Using Python's standard library and command-line arguments instead of writing everything from scratch.
+
+- **[average.py](Week%204/average.py)** - Demonstrates `import statistics` and `statistics.mean()`. Prints the average of `[100, 90]`.
+
+- **[generate.py](Week%204/generate.py)** - Demonstrates `import random` and `random.shuffle()`, which shuffles a list in place (no return value) rather than returning a new one. Shuffles `["jack", "queen", "king"]` and prints them in random order.
+
+- **[name.py](Week%204/name.py)** - Demonstrates `import sys` and `sys.argv` for command-line arguments, plus catching `IndexError` when an expected argument is missing instead of checking `len(sys.argv)` up front. Run as `python name.py David` to print `hello, my name is David`, or with no argument to print `Too few arguments`.
 
 ## Getting Started
 
@@ -123,6 +133,9 @@ python "Week 3/Problem Set/fuel/fuel.py"
 python "Week 3/Problem Set/grocery/grocery.py"
 python "Week 3/Problem Set/outdated/outdated.py"
 python "Week 3/Problem Set/taqueria/taqueria.py"
+python "Week 4/average.py"
+python "Week 4/generate.py"
+python "Week 4/name.py" David
 ```
 
 - `hello.py` (Week 0) - prompts for a name, prints a greeting.
@@ -155,6 +168,9 @@ python "Week 3/Problem Set/taqueria/taqueria.py"
 - `grocery.py` - tallies items until Ctrl+D.
 - `outdated.py` - date to `YYYY-MM-DD`.
 - `taqueria.py` - running order total until Ctrl+D.
+- `average.py` - prints the average of `[100, 90]`.
+- `generate.py` - shuffles and prints three cards.
+- `name.py` - greets a name passed as a command-line argument.
 
 ## Learning Objectives
 
@@ -180,3 +196,6 @@ python "Week 3/Problem Set/taqueria/taqueria.py"
 - `try`/`except`, catching specific/multiple exception types (`except (A, B):`), and `except ...: pass` to silently retry
 - `EOFError` for end-of-input as a loop's exit condition; `KeyError` from a missing dict key driving control flow instead of a membership check first
 - Reusing a list to both validate membership and convert via `.index()`
+- Importing standard library modules (`import statistics`, `import random`, `import sys`) instead of hand-rolling functionality
+- In-place mutation (`random.shuffle()`) vs. functions that return a new value
+- Command-line arguments via `sys.argv`, and `IndexError` when an expected argument is missing
