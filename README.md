@@ -96,7 +96,11 @@ Using Python's standard library and command-line arguments instead of writing ev
 
 - **[generate.py](Week%204/generate.py)** - Demonstrates `import random` and `random.shuffle()`, which shuffles a list in place (no return value) rather than returning a new one. Shuffles `["jack", "queen", "king"]` and prints them in random order.
 
-- **[name.py](Week%204/name.py)** - Demonstrates `import sys` and `sys.argv` for command-line arguments, plus catching `IndexError` when an expected argument is missing instead of checking `len(sys.argv)` up front. Run as `python name.py David` to print `hello, my name is David`, or with no argument to print `Too few arguments`.
+- **[name.py](Week%204/name.py)** - Demonstrates `import sys` and `sys.argv` for command-line arguments, `sys.exit(message)` as a one-line "print and quit" for the missing-argument case, and slicing `sys.argv[1:-1]` to loop over multiple names - note this drops the *last* argument, so `python name.py David` (only one name) prints nothing, while `python name.py David Alice` greets only David. Run with one or more names; with none, prints `Too few arguments` and exits.
+
+- **[itunes.py](Week%204/itunes.py)** - Currently an empty placeholder file (no code yet).
+
+- **[say.py](Week%204/say.py)** - Demonstrates a third-party package (`import cowsay`, installed separately via `pip install cowsay` - unlike `statistics`/`random`/`sys`, which ship with Python) and `sys.argv` for a single command-line argument. Run as `python say.py David` to print an ASCII trex saying `hello, David`.
 
 ## Getting Started
 
@@ -136,7 +140,10 @@ python "Week 3/Problem Set/taqueria/taqueria.py"
 python "Week 4/average.py"
 python "Week 4/generate.py"
 python "Week 4/name.py" David
+python "Week 4/say.py" David
 ```
+
+`say.py` needs `cowsay` installed first: `pip install cowsay`. `itunes.py` is empty and has nothing to run yet.
 
 - `hello.py` (Week 0) - prompts for a name, prints a greeting.
 - `calculator.py` - prompts for a number, prints its square.
@@ -170,7 +177,8 @@ python "Week 4/name.py" David
 - `taqueria.py` - running order total until Ctrl+D.
 - `average.py` - prints the average of `[100, 90]`.
 - `generate.py` - shuffles and prints three cards.
-- `name.py` - greets a name passed as a command-line argument.
+- `name.py` - greets names passed as command-line arguments (drops the last one - see note above).
+- `say.py` - prints an ASCII trex greeting a name passed as a command-line argument.
 
 ## Learning Objectives
 
@@ -198,4 +206,5 @@ python "Week 4/name.py" David
 - Reusing a list to both validate membership and convert via `.index()`
 - Importing standard library modules (`import statistics`, `import random`, `import sys`) instead of hand-rolling functionality
 - In-place mutation (`random.shuffle()`) vs. functions that return a new value
-- Command-line arguments via `sys.argv`, and `IndexError` when an expected argument is missing
+- Command-line arguments via `sys.argv`, slicing `sys.argv[1:-1]` to loop over several, and `sys.exit(message)` to print and quit in one line
+- Third-party packages (`pip install cowsay`) vs. the standard library
