@@ -104,6 +104,10 @@ Using Python's standard library and command-line arguments instead of writing ev
 
 - **[say.py](Week%204/say.py)** - Demonstrates importing one specific name out of a local module (`from sayings import goodbye`) rather than the whole module, and `sys.argv` for a single command-line argument. Run as `python say.py David` to print `goodbye, David`.
 
+#### Problem Set 4
+
+- **[Problem Set/emojize/emojize.py](Week%204/Problem%20Set/emojize/emojize.py)** - "Emojize". Demonstrates a third-party package beyond `requests` (`import emoji`, installed via `pip install emoji`), and `emoji.emojize(text, language="alias")` to convert a `:shorthand:` code into its emoji character. Prompts for text like `:thumbs_up:` and prints the emoji it represents.
+
 ## Getting Started
 
 Run any file with `python` and its quoted path (folder names contain spaces):
@@ -145,9 +149,10 @@ python "Week 4/name.py" David
 python "Week 4/itunes.py" "Taylor Swift"
 python "Week 4/sayings.py"
 python "Week 4/say.py" David
+python "Week 4/Problem Set/emojize/emojize.py"
 ```
 
-`itunes.py` needs `requests` installed first: `pip install requests`.
+`itunes.py` needs `requests` installed first: `pip install requests`. `emojize.py` needs `emoji` installed first: `pip install emoji`.
 
 - `hello.py` (Week 0) - prompts for a name, prints a greeting.
 - `calculator.py` - prompts for a number, prints its square.
@@ -185,6 +190,7 @@ python "Week 4/say.py" David
 - `itunes.py` - prints iTunes song titles matching a search term.
 - `sayings.py` - prints `hello, world` and `goodbye, world` when run directly.
 - `say.py` - prints `goodbye, <name>` for a name passed as a command-line argument.
+- `emojize.py` - converts a `:shorthand:` code (e.g. `:thumbs_up:`) to its emoji.
 
 ## Learning Objectives
 
