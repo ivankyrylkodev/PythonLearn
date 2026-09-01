@@ -98,9 +98,11 @@ Using Python's standard library and command-line arguments instead of writing ev
 
 - **[name.py](Week%204/name.py)** - Demonstrates `import sys` and `sys.argv` for command-line arguments, `sys.exit(message)` as a one-line "print and quit" for the missing-argument case, and slicing `sys.argv[1:-1]` to loop over multiple names - note this drops the *last* argument, so `python name.py David` (only one name) prints nothing, while `python name.py David Alice` greets only David. Run with one or more names; with none, prints `Too few arguments` and exits.
 
-- **[itunes.py](Week%204/itunes.py)** - Currently an empty placeholder file (no code yet).
+- **[itunes.py](Week%204/itunes.py)** - "iTunes Search". Demonstrates a third-party package (`import requests`, installed via `pip install requests` - unlike `statistics`/`random`/`sys`, which ship with Python) used to call a web API, building a URL by string concatenation with `sys.argv[1]`, `response.json()` to parse the JSON response body, and looping over a list of dicts (`o["results"]`) to pull one field (`trackName`) out of each. Exits silently (`sys.exit()` with no message) unless given exactly one argument. Run as `python itunes.py "Taylor Swift"` to print matching track names from the iTunes Search API.
 
-- **[say.py](Week%204/say.py)** - Demonstrates a third-party package (`import cowsay`, installed separately via `pip install cowsay` - unlike `statistics`/`random`/`sys`, which ship with Python) and `sys.argv` for a single command-line argument. Run as `python say.py David` to print an ASCII trex saying `hello, David`.
+- **[sayings.py](Week%204/sayings.py)** - Demonstrates a module written to be imported rather than run directly: plain `hello()`/`goodbye()` helper functions plus a `main()` guarded by `if __name__ == "__main__":`, so running this file directly calls both, while importing it elsewhere (as `say.py` does) runs neither automatically. Run directly, prints `hello, world` and `goodbye, world`.
+
+- **[say.py](Week%204/say.py)** - Demonstrates importing one specific name out of a local module (`from sayings import goodbye`) rather than the whole module, and `sys.argv` for a single command-line argument. Run as `python say.py David` to print `goodbye, David`.
 
 ## Getting Started
 
@@ -140,10 +142,12 @@ python "Week 3/Problem Set/taqueria/taqueria.py"
 python "Week 4/average.py"
 python "Week 4/generate.py"
 python "Week 4/name.py" David
+python "Week 4/itunes.py" "Taylor Swift"
+python "Week 4/sayings.py"
 python "Week 4/say.py" David
 ```
 
-`say.py` needs `cowsay` installed first: `pip install cowsay`. `itunes.py` is empty and has nothing to run yet.
+`itunes.py` needs `requests` installed first: `pip install requests`.
 
 - `hello.py` (Week 0) - prompts for a name, prints a greeting.
 - `calculator.py` - prompts for a number, prints its square.
@@ -178,7 +182,9 @@ python "Week 4/say.py" David
 - `average.py` - prints the average of `[100, 90]`.
 - `generate.py` - shuffles and prints three cards.
 - `name.py` - greets names passed as command-line arguments (drops the last one - see note above).
-- `say.py` - prints an ASCII trex greeting a name passed as a command-line argument.
+- `itunes.py` - prints iTunes song titles matching a search term.
+- `sayings.py` - prints `hello, world` and `goodbye, world` when run directly.
+- `say.py` - prints `goodbye, <name>` for a name passed as a command-line argument.
 
 ## Learning Objectives
 
@@ -207,4 +213,7 @@ python "Week 4/say.py" David
 - Importing standard library modules (`import statistics`, `import random`, `import sys`) instead of hand-rolling functionality
 - In-place mutation (`random.shuffle()`) vs. functions that return a new value
 - Command-line arguments via `sys.argv`, slicing `sys.argv[1:-1]` to loop over several, and `sys.exit(message)` to print and quit in one line
-- Third-party packages (`pip install cowsay`) vs. the standard library
+- Third-party packages (`pip install requests`) vs. the standard library
+- Calling a web API with `requests.get()` and parsing the JSON response with `response.json()`
+- Writing a module meant to be imported (`sayings.py`), guarding its demo code with `if __name__ == "__main__":` so importing it doesn't run that code
+- Importing one specific name from a local module (`from sayings import goodbye`) instead of the whole module
