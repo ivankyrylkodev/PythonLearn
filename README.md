@@ -108,6 +108,10 @@ Using Python's standard library and command-line arguments instead of writing ev
 
 - **[Problem Set/emojize/emojize.py](Week%204/Problem%20Set/emojize/emojize.py)** - "Emojize". Demonstrates a third-party package beyond `requests` (`import emoji`, installed via `pip install emoji`), and `emoji.emojize(text, language="alias")` to convert a `:shorthand:` code into its emoji character. Prompts for text like `:thumbs_up:` and prints the emoji it represents.
 
+- **[Problem Set/adieu/adieu.py](Week%204/Problem%20Set/adieu/adieu.py)** - "Adieu, Adieu". Demonstrates the third-party `inflect` package (`pip install inflect`), building an `inflect.engine()` once and reusing it, collecting values into a list inside a `try`/`except EOFError:` loop, and `p.join(names)` to grammatically join a list with commas and "and" (handles 0, 1, 2, or many names correctly, unlike manual `", ".join()`). Reads names until Ctrl+D, then prints `Adieu, adieu, to ...` followed by the joined list.
+
+- **[Problem Set/figlet/figlet.py](Week%204/Problem%20Set/figlet/figlet.py)** - "Figlet". Demonstrates the third-party `pyfiglet` package (`pip install pyfiglet`), branching on `len(sys.argv)` to support both a zero-argument and a `-f`/`-font FONT`-flagged form, validating the flag name and that the requested font is a member of `pyfiglet.Figlet().getFonts()` before using it, `random.choice()` to pick a font when none is specified, and `sys.exit("Invalid usage")` for malformed arguments. Prints the input text as ASCII art in the chosen (or random) font.
+
 ## Getting Started
 
 Run any file with `python` and its quoted path (folder names contain spaces):
@@ -150,9 +154,11 @@ python "Week 4/itunes.py" "Taylor Swift"
 python "Week 4/sayings.py"
 python "Week 4/say.py" David
 python "Week 4/Problem Set/emojize/emojize.py"
+python "Week 4/Problem Set/adieu/adieu.py"
+python "Week 4/Problem Set/figlet/figlet.py"
 ```
 
-`itunes.py` needs `requests` installed first: `pip install requests`. `emojize.py` needs `emoji` installed first: `pip install emoji`.
+`itunes.py` needs `requests` installed first: `pip install requests`. `emojize.py` needs `emoji` installed first: `pip install emoji`. `adieu.py` needs `inflect` installed first: `pip install inflect`. `figlet.py` needs `pyfiglet` installed first: `pip install pyfiglet`.
 
 - `hello.py` (Week 0) - prompts for a name, prints a greeting.
 - `calculator.py` - prompts for a number, prints its square.
@@ -191,6 +197,8 @@ python "Week 4/Problem Set/emojize/emojize.py"
 - `sayings.py` - prints `hello, world` and `goodbye, world` when run directly.
 - `say.py` - prints `goodbye, <name>` for a name passed as a command-line argument.
 - `emojize.py` - converts a `:shorthand:` code (e.g. `:thumbs_up:`) to its emoji.
+- `adieu.py` - farewells a list of names typed until Ctrl+D.
+- `figlet.py` - prints input text as ASCII art, in a chosen or random font.
 
 ## Learning Objectives
 
@@ -223,3 +231,5 @@ python "Week 4/Problem Set/emojize/emojize.py"
 - Calling a web API with `requests.get()` and parsing the JSON response with `response.json()`
 - Writing a module meant to be imported (`sayings.py`), guarding its demo code with `if __name__ == "__main__":` so importing it doesn't run that code
 - Importing one specific name from a local module (`from sayings import goodbye`) instead of the whole module
+- Grammatically joining a list of varying length with `inflect.engine().join()` instead of manual comma-handling
+- Branching on `len(sys.argv)` to support multiple valid call forms, validating a flag plus its value against an allowed set, and `random.choice()` to pick from a list
