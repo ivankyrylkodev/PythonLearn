@@ -112,6 +112,12 @@ Using Python's standard library and command-line arguments instead of writing ev
 
 - **[Problem Set/figlet/figlet.py](Week%204/Problem%20Set/figlet/figlet.py)** - "Figlet". Demonstrates the third-party `pyfiglet` package (`pip install pyfiglet`), branching on `len(sys.argv)` to support both a zero-argument and a `-f`/`-font FONT`-flagged form, validating the flag name and that the requested font is a member of `pyfiglet.Figlet().getFonts()` before using it, `random.choice()` to pick a font when none is specified, and `sys.exit("Invalid usage")` for malformed arguments. Prints the input text as ASCII art in the chosen (or random) font.
 
+- **[Problem Set/bitcoin/bitcoin.py](Week%204/Problem%20Set/bitcoin/bitcoin.py)** - "Bitcoin Price". Demonstrates calling a live REST API with `requests.get()`, pulling a nested field out of the response (`o["data"]["priceUsd"]`), multiplying it by a command-line argument, and formatting the result with both a thousands separator and four decimal places (`f"${result:,.4f}"`). Also demonstrates catching `requests.RequestException` (network/API failures) separately from `ValueError` (a non-numeric argument) - note the file also does `import json` but never uses it, since `response.json()` is a method `requests` provides, not the `json` module. Run as `python bitcoin.py 1.5` to print the current USD value of 1.5 bitcoin.
+
+- **[Problem Set/game/game.py](Week%204/Problem%20Set/game/game.py)** - "Guess the Number". Demonstrates two separate input-validation loops built the same way (`while True:` + `try`/`except ValueError:`, with `raise ValueError` used to manually reject an in-range-but-invalid number like a negative level) but exited two different ways - `break` once a valid level is read, `continue` to silently re-prompt after an invalid guess. Picks a random integer from 1 to the chosen level with `random.randint()`, then loops on guesses printing `Too small!`/`Too large!` until the guess matches, then `Just right!`.
+
+- **[Problem Set/professor/professor.py](Week%204/Problem%20Set/professor/professor.py)** - "Little Professor". Demonstrates splitting work across `main()`, `get_level()`, and `generate_integer(level)`; scaling the difficulty of two random addends by level by using it as an exponent (`random.randint(1, 10 ** level)`); a nested `for i in range(3):` giving three attempts per question; `print(..., end="")` to keep the running `a + b = ` prompt on one line across retries; and checking `i == 2` to reveal the correct answer only after the final wrong attempt. Asks ten addition questions and prints a score out of 10, printing `EEE` for each wrong or non-numeric answer.
+
 ## Getting Started
 
 Run any file with `python` and its quoted path (folder names contain spaces):
@@ -156,9 +162,12 @@ python "Week 4/say.py" David
 python "Week 4/Problem Set/emojize/emojize.py"
 python "Week 4/Problem Set/adieu/adieu.py"
 python "Week 4/Problem Set/figlet/figlet.py"
+python "Week 4/Problem Set/bitcoin/bitcoin.py" 1.5
+python "Week 4/Problem Set/game/game.py"
+python "Week 4/Problem Set/professor/professor.py"
 ```
 
-`itunes.py` needs `requests` installed first: `pip install requests`. `emojize.py` needs `emoji` installed first: `pip install emoji`. `adieu.py` needs `inflect` installed first: `pip install inflect`. `figlet.py` needs `pyfiglet` installed first: `pip install pyfiglet`.
+`itunes.py` and `bitcoin.py` need `requests` installed first: `pip install requests`. `emojize.py` needs `emoji` installed first: `pip install emoji`. `adieu.py` needs `inflect` installed first: `pip install inflect`. `figlet.py` needs `pyfiglet` installed first: `pip install pyfiglet`.
 
 - `hello.py` (Week 0) - prompts for a name, prints a greeting.
 - `calculator.py` - prompts for a number, prints its square.
@@ -199,6 +208,9 @@ python "Week 4/Problem Set/figlet/figlet.py"
 - `emojize.py` - converts a `:shorthand:` code (e.g. `:thumbs_up:`) to its emoji.
 - `adieu.py` - farewells a list of names typed until Ctrl+D.
 - `figlet.py` - prints input text as ASCII art, in a chosen or random font.
+- `bitcoin.py` - USD value of a bitcoin amount, via a live price API.
+- `game.py` - number-guessing game at a player-chosen difficulty.
+- `professor.py` - "Little Professor" addition quiz, three tries per question, score out of 10.
 
 ## Learning Objectives
 
@@ -233,3 +245,6 @@ python "Week 4/Problem Set/figlet/figlet.py"
 - Importing one specific name from a local module (`from sayings import goodbye`) instead of the whole module
 - Grammatically joining a list of varying length with `inflect.engine().join()` instead of manual comma-handling
 - Branching on `len(sys.argv)` to support multiple valid call forms, validating a flag plus its value against an allowed set, and `random.choice()` to pick from a list
+- Catching a library-specific exception (`requests.RequestException`) separately from a built-in one (`ValueError`), and formatting numbers with a thousands separator (`:,.4f`)
+- `raise`-ing an exception manually so an existing `except` block also catches an otherwise-valid value that fails an extra check (e.g. a negative number)
+- Retrying a fixed number of attempts with a nested `for i in range(3):`, using `end=""` to build a prompt across retries and revealing an answer only after the last attempt
