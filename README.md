@@ -118,6 +118,14 @@ Using Python's standard library and command-line arguments instead of writing ev
 
 - **[Problem Set/professor/professor.py](Week%204/Problem%20Set/professor/professor.py)** - "Little Professor". Demonstrates splitting work across `main()`, `get_level()`, and `generate_integer(level)`; scaling the difficulty of two random addends by level by using it as an exponent (`random.randint(1, 10 ** level)`); a nested `for i in range(3):` giving three attempts per question; `print(..., end="")` to keep the running `a + b = ` prompt on one line across retries; and checking `i == 2` to reveal the correct answer only after the final wrong attempt. Asks ten addition questions and prints a score out of 10, printing `EEE` for each wrong or non-numeric answer.
 
+### Week 5 - Unit Testing
+
+Testing code with `pytest` instead of only checking it by eye.
+
+- **[calculator.py](Week%205/calculator.py)** - Same `square()` program as [Week 0's calculator.py](Week%200/calculator.py), moved here so it has something to be tested against. Demonstrates nothing new by itself - the point is what's tested alongside it.
+
+- **[test_calculator.py](Week%205/test_calculator.py)** - Demonstrates a `pytest` test file: importing a function to test with `from calculator import square` (rather than running `calculator.py` directly), naming a test function `test_square` so `pytest` discovers it automatically, and `assert` statements checking several cases in one test (a positive number, a negative number, and zero) to confirm squaring works and that a negative input still returns a positive result. Run with `pytest test_calculator.py` from inside `Week 5/`; no output means every `assert` passed.
+
 ## Getting Started
 
 Run any file with `python` and its quoted path (folder names contain spaces):
@@ -165,6 +173,14 @@ python "Week 4/Problem Set/figlet/figlet.py"
 python "Week 4/Problem Set/bitcoin/bitcoin.py" 1.5
 python "Week 4/Problem Set/game/game.py"
 python "Week 4/Problem Set/professor/professor.py"
+python "Week 5/calculator.py"
+```
+
+`test_calculator.py` needs `pytest` installed first: `pip install pytest`. Run it (from inside `Week 5/`, since it imports `calculator` by module name) with:
+
+```bash
+cd "Week 5"
+pytest test_calculator.py
 ```
 
 `itunes.py` and `bitcoin.py` need `requests` installed first: `pip install requests`. `emojize.py` needs `emoji` installed first: `pip install emoji`. `adieu.py` needs `inflect` installed first: `pip install inflect`. `figlet.py` needs `pyfiglet` installed first: `pip install pyfiglet`.
@@ -211,6 +227,8 @@ python "Week 4/Problem Set/professor/professor.py"
 - `bitcoin.py` - USD value of a bitcoin amount, via a live price API.
 - `game.py` - number-guessing game at a player-chosen difficulty.
 - `professor.py` - "Little Professor" addition quiz, three tries per question, score out of 10.
+- `calculator.py` (Week 5) - prompts for a number, prints its square (same as Week 0's, kept here for `test_calculator.py` to test).
+- `test_calculator.py` - `pytest` test suite for `square()`; run with `pytest`, prints nothing on success.
 
 ## Learning Objectives
 
@@ -248,3 +266,4 @@ python "Week 4/Problem Set/professor/professor.py"
 - Catching a library-specific exception (`requests.RequestException`) separately from a built-in one (`ValueError`), and formatting numbers with a thousands separator (`:,.4f`)
 - `raise`-ing an exception manually so an existing `except` block also catches an otherwise-valid value that fails an extra check (e.g. a negative number)
 - Retrying a fixed number of attempts with a nested `for i in range(3):`, using `end=""` to build a prompt across retries and revealing an answer only after the last attempt
+- Writing automated tests with `pytest`: importing the function under test, naming test functions `test_*` for auto-discovery, and `assert` to check several cases (including edge cases like `0` and negative numbers) in one test
